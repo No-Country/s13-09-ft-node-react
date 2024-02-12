@@ -1,0 +1,30 @@
+{
+  "name": "c15-04-m-node-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --env-file .env app.js",
+    "start": "node --env-file .env app.js"
+  },
+  "keywords": [],
+  "author": "Patricia Caicedo, Edith Escarlon, Santiago Ariel, Agustin Lucentini, Michael Gonzalez, Brandon Sanches, Nehuen Grosso, Alejandro Quiñones",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "googleapis": "^129.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.1",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.9.7"
+  },
+  "devDependencies": {
+    "@types/mongoose": "^5.11.97",
+    "nodemon": "^3.0.2"
+  }
+}
