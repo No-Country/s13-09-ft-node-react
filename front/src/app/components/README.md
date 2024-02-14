@@ -1,0 +1,1 @@
+<!-- Aqui pueden ir los componentes globales, por ej botones -->

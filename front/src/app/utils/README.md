@@ -1,0 +1,1 @@
+<!-- Aqui pueden ir funciones reutilizables, por ej: funcion para validar campos -->
