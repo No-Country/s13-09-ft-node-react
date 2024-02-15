@@ -1,9 +1,10 @@
 
 import { Model } from "sequelize";
-import patientFiles from "./patientFiles";
 import appointment from "./appointment";
-const patient = (sequelize, DataTypes) => {
-  class Patient extends Model {
+import specialty from "./specialty";
+
+const doctor = (sequelize, DataTypes) => {
+  class Doctor extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,15 +12,15 @@ const patient = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      // In your Patient model definition
-      Patient.hasMany(patientFiles, { foreignKey: 'patientId' });
-      Patient.hasMany(appointment, { foreignKey: 'patientId' });
+      this.belongsToMany(specialty, { through: 'DoctorSpecialties', foreignKey: 'doctorId' });
+      this.hasMany(appointment, { foreignKey: 'doctorId' });
+
     }
   }
-  Patient.init(
+  Doctor.init(
     {
       id: {
-        type: DataTypes.UUIDV4,
+        type: DataTypes.UUID,
         allowNull: false,
         primaryKey: true,
       },
@@ -43,7 +44,6 @@ const patient = (sequelize, DataTypes) => {
           },
         },
       },
-      identity_card: { type: DataTypes.STRING, allowNull: false, unique: true },
       active: { type: DataTypes.BOOLEAN, default: false },
       email: {
         type: DataTypes.STRING,
@@ -69,15 +69,37 @@ const patient = (sequelize, DataTypes) => {
         unique: true,
         allowNull: false,
       },
+      role: {
+        type: DataTypes.STRING,
+        defaultValue: "doctor"
+      },
+      schedule: {
+        type: DataTypes.JSON,
+        allowNull: false,
+      },
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.literal("CURRENT_TIMESTAMP"),
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.literal("CURRENT_TIMESTAMP"),
+      },
+      deletedAt: {
+        allowNull: true,
+        type: DataTypes.DATE,
+      },
     },
     {
       sequelize,
-      modelName: "patient",
+      modelName:"doctor",
       paranoid: true,
       timestamps: true,
     }
   );
-  return Patient;
+  return Doctor;
 };
 
-export default patient;
+export default doctor;
