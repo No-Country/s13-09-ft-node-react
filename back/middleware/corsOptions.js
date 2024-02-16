@@ -2,7 +2,9 @@ import "dotenv/config";
 
 import cors from "cors";
 
-const ACCEPTED_ORIGINS = [process.env.CORS];
+const ACCEPTED_ORIGINS = [
+  `${process.env.CORS}`,
+];
 
 const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) =>
   cors({
