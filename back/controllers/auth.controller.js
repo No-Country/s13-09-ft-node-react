@@ -1,4 +1,4 @@
-import authServices from "../services/auth.service";
+import authServices from "../services/auth.service.js";
 
 async function login(req, res) {
     try {

@@ -1,7 +1,7 @@
 
 import { Model } from "sequelize";
-import patientFiles from "./patientFiles";
-import appointment from "./appointment";
+import patientFiles from "./patientFiles.js";
+import appointment from "./appointment.js";
 const patient = (sequelize, DataTypes) => {
   class Patient extends Model {
     /**

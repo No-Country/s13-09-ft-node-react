@@ -1,6 +1,6 @@
 
 import { Model } from "sequelize";
-import patient from "./patient";
+import patient from "./patient.js";
 const patientFiles = (sequelize, DataTypes) => {
   class PatientFiles extends Model {
     /**
