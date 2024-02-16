@@ -1,7 +1,7 @@
-
 import { Model } from "sequelize";
-const specialty = (sequelize, DataTypes) => {
-  class Specialty extends Model {
+
+export default (sequelize, DataTypes) => {
+  class Appointment extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -9,29 +9,38 @@ const specialty = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      // In your Patient model definition
+
+      models.appointment.belongsTo(models.patient, { foreignKey: "patientId" });
+      models.appointment.belongsTo(models.doctor, { foreignKey: "doctorId" });
     }
   }
-  Specialty.init(
+  Appointment.init(
     {
       id: {
+        type: DataTypes.UUID,
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER
       },
-      name: {
+      observations: {
+        type: DataTypes.JSON,
+        allowNull: true, // You may change this to false if observations are required
+      },
+      day: {
+        type: DataTypes.DATEONLY,
         allowNull: false,
-        type: DataTypes.STRING
+      },
+      time: {
+        type: DataTypes.TIME,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
-        defaultValue: DataTypes.literal("CURRENT_TIMESTAMP"),
       },
       updatedAt: {
         allowNull: false,
         type: DataTypes.DATE,
-        defaultValue: DataTypes.literal("CURRENT_TIMESTAMP"),
       },
       deletedAt: {
         allowNull: true,
@@ -40,12 +49,10 @@ const specialty = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "specialty",
+      modelName: "appointment",
       paranoid: true,
       timestamps: true,
     }
   );
-  return Specialty;
+  return Appointment;
 };
-
-export default specialty;
