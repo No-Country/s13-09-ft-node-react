@@ -50,6 +50,7 @@ export default (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "appointment",
+      tableName: "appointment",
       paranoid: true,
       timestamps: true,
     }

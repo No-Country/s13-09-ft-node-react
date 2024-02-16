@@ -92,6 +92,7 @@ export default (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "doctor",
+      tableName: "doctor",
       paranoid: true,
       timestamps: true,
     }
