@@ -1,6 +1,6 @@
-
 import { Model } from "sequelize";
-const specialty = (sequelize, DataTypes) => {
+
+export default (sequelize, DataTypes) => {
   class Specialty extends Model {
     /**
      * Helper method for defining associations.
@@ -17,21 +17,19 @@ const specialty = (sequelize, DataTypes) => {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
       },
       name: {
         allowNull: false,
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
       },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
-        defaultValue: DataTypes.literal("CURRENT_TIMESTAMP"),
       },
       updatedAt: {
         allowNull: false,
         type: DataTypes.DATE,
-        defaultValue: DataTypes.literal("CURRENT_TIMESTAMP"),
       },
       deletedAt: {
         allowNull: true,
@@ -47,5 +45,3 @@ const specialty = (sequelize, DataTypes) => {
   );
   return Specialty;
 };
-
-export default specialty;

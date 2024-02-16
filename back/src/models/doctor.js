@@ -1,9 +1,6 @@
-
 import { Model } from "sequelize";
-import appointment from "./appointment.js";
-import specialty from "./specialty.js";
 
-const doctor = (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
   class Doctor extends Model {
     /**
      * Helper method for defining associations.
@@ -12,9 +9,11 @@ const doctor = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsToMany(specialty, { through: 'DoctorSpecialties', foreignKey: 'doctorId' });
-      this.hasMany(appointment, { foreignKey: 'doctorId' });
-
+      models.doctor.belongsToMany(models.specialty, {
+        through: "DoctorSpecialties",
+        foreignKey: "doctorId",
+      });
+      models.doctor.hasMany(models.appointment, { foreignKey: "doctorId" });
     }
   }
   Doctor.init(
@@ -71,7 +70,7 @@ const doctor = (sequelize, DataTypes) => {
       },
       role: {
         type: DataTypes.STRING,
-        defaultValue: "doctor"
+        defaultValue: "doctor",
       },
       schedule: {
         type: DataTypes.JSON,
@@ -80,12 +79,10 @@ const doctor = (sequelize, DataTypes) => {
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
-        defaultValue: DataTypes.literal("CURRENT_TIMESTAMP"),
       },
       updatedAt: {
         allowNull: false,
         type: DataTypes.DATE,
-        defaultValue: DataTypes.literal("CURRENT_TIMESTAMP"),
       },
       deletedAt: {
         allowNull: true,
@@ -94,12 +91,11 @@ const doctor = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName:"doctor",
+      modelName: "doctor",
+      tableName: "doctor",
       paranoid: true,
       timestamps: true,
     }
   );
   return Doctor;
 };
-
-export default doctor;
