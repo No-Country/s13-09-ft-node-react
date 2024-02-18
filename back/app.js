@@ -10,6 +10,6 @@ server.use(express.json());
 server.use(corsMiddleware());
 swaggerDocs(server, process.env.PORT)
 server.use(logging);
-server.use(router);
+server.use('/', router);
 
 export default server;
