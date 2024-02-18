@@ -2,7 +2,6 @@ import patientServices from "../services/patients.service.js";
 
 async function register(req, res) {
     try {
-        console.log("lllll")
         const { data } = req.body;
         const user = await patientServices.checkPatients(data.email);
         console.log("user", user);
