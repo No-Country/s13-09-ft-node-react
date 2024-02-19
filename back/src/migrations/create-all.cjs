@@ -35,7 +35,7 @@ module.exports = {
           allowNull: false,
           unique: true,
         },
-        active: { type: Sequelize.BOOLEAN, default: false },
+        active: { type: Sequelize.BOOLEAN, allowNull: false, default: false },
         email: {
           type: Sequelize.STRING,
           unique: true,
@@ -82,42 +82,55 @@ module.exports = {
       {
         paranoid: true,
         timestamps: true,
+        freezeTableName: true,
       }
     );
-    await queryInterface.createTable("patientFiles", {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER,
-      },
-      description: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      filePath: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      patientId: {
-        type: Sequelize.UUID,
-        allowNull: false,
-        references: {
-          model: "patients",
-          key: "id",
+    await queryInterface.createTable(
+      "patientFiles",
+      {
+        id: {
+          allowNull: false,
+          autoIncrement: true,
+          primaryKey: true,
+          type: Sequelize.INTEGER,
         },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE",
+        description: {
+          type: Sequelize.TEXT,
+          allowNull: false,
+        },
+        filePath: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
+        patientId: {
+          type: Sequelize.UUID,
+          allowNull: false,
+          references: {
+            model: "patients",
+            key: "id",
+          },
+          onUpdate: "CASCADE",
+          onDelete: "CASCADE",
+        },
+        createdAt: {
+          allowNull: false,
+          type: Sequelize.DATE,
+        },
+        updatedAt: {
+          allowNull: false,
+          type: Sequelize.DATE,
+        },
+        deletedAt: {
+          allowNull: true,
+          type: Sequelize.DATE,
+        },
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
-    });
+      {
+        paranoid: true,
+        timestamps: true,
+        freezeTableName: true,
+      }
+    );
     await queryInterface.createTable(
       "doctors",
       {
@@ -146,7 +159,7 @@ module.exports = {
             },
           },
         },
-        active: { type: Sequelize.BOOLEAN, default: false },
+        active: { type: Sequelize.BOOLEAN, allowNull: false, default: false },
         email: {
           type: Sequelize.STRING,
           unique: true,
@@ -173,6 +186,7 @@ module.exports = {
         },
         role: {
           type: Sequelize.STRING,
+          allowNull: false,
           defaultValue: "doctor",
         },
         schedule: {
@@ -197,6 +211,7 @@ module.exports = {
       {
         paranoid: true,
         timestamps: true,
+        freezeTableName: true,
       }
     );
     await queryInterface.createTable(
@@ -209,7 +224,7 @@ module.exports = {
         },
         observations: {
           type: Sequelize.JSON,
-          allowNull: true, // You may change this to false if observations are required
+          allowNull: false,
         },
         day: {
           type: Sequelize.DATEONLY,
@@ -257,10 +272,11 @@ module.exports = {
       {
         paranoid: true,
         timestamps: true,
+        freezeTableName: true,
       }
     );
     await queryInterface.createTable(
-      "specialty",
+      "specialties",
       {
         id: {
           allowNull: false,
@@ -290,9 +306,10 @@ module.exports = {
       {
         paranoid: true,
         timestamps: true,
+        freezeTableName: true,
       }
     );
-    await queryInterface.createTable("doctorSpecialties", {
+    await queryInterface.createTable("doctors_specialties", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -311,7 +328,7 @@ module.exports = {
       specialtyId: {
         type: Sequelize.INTEGER,
         references: {
-          model: "specialty",
+          model: "specialties",
           key: "id",
         },
         onUpdate: "CASCADE",
@@ -359,10 +376,10 @@ module.exports = {
     //   "DoctorSpecialties",
     //   "DoctorSpecialties_doctorId_fkey"
     // );
-    
+
     //drop tables
-    await queryInterface.dropTable("doctorSpecialties");
-    await queryInterface.dropTable("specialty");
+    await queryInterface.dropTable("doctors_specialties");
+    await queryInterface.dropTable("specialties");
     await queryInterface.dropTable("appointments");
     await queryInterface.dropTable("doctors");
     await queryInterface.dropTable("patientFiles");

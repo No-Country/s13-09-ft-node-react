@@ -42,7 +42,7 @@ export default (sequelize, DataTypes) => {
         },
       },
       identity_card: { type: DataTypes.STRING, allowNull: false, unique: true },
-      active: { type: DataTypes.BOOLEAN, default: false },
+      active: { type: DataTypes.BOOLEAN, allowNull: false, default: false },
       email: {
         type: DataTypes.STRING,
         unique: true,
@@ -67,12 +67,19 @@ export default (sequelize, DataTypes) => {
         unique: true,
         allowNull: false,
       },
+      role: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: "patient",
+      },
     },
     {
       sequelize,
       modelName: "patient",
+      tableName: "patients",
       paranoid: true,
       timestamps: true,
+      freezeTableName: true,
     }
   );
   return Patient;
