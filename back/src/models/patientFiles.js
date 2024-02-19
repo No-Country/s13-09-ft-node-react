@@ -1,7 +1,6 @@
-
 import { Model } from "sequelize";
-import patient from "./patient.js";
-const patientFiles = (sequelize, DataTypes) => {
+
+export default (sequelize, DataTypes) => {
   class PatientFiles extends Model {
     /**
      * Helper method for defining associations.
@@ -11,7 +10,9 @@ const patientFiles = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       // In your Patient model definition
-      PatientFiles.belongsTo(patient, { foreignKey: 'patientId' });
+      models.patientFiles.belongsTo(models.patient, {
+        foreignKey: "patientId",
+      });
     }
   }
   PatientFiles.init(
@@ -20,23 +21,23 @@ const patientFiles = (sequelize, DataTypes) => {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
       },
       description: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       filePath: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
-        type: DataTypes.DATE
+        type: DataTypes.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: DataTypes.DATE
+        type: DataTypes.DATE,
       },
       deletedAt: {
         allowNull: true,
@@ -52,5 +53,3 @@ const patientFiles = (sequelize, DataTypes) => {
   );
   return PatientFiles;
 };
-
-export default patientFiles;
