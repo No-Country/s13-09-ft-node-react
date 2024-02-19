@@ -38,7 +38,7 @@ export default function Login() {
         <p>
           ¿No tienes cuenta?{' '}
           <Link
-            href={'/login'}
+            href={'/register'}
             className='text-primary font-bold hover:opacity-90'>
             Registrarse
           </Link>

@@ -1,8 +1,6 @@
-
 import { Model } from "sequelize";
-import patient from './patient.js'
-import doctor from "./doctor.js";
-const appointment = (sequelize, DataTypes) => {
+
+export default (sequelize, DataTypes) => {
   class Appointment extends Model {
     /**
      * Helper method for defining associations.
@@ -12,8 +10,9 @@ const appointment = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       // In your Patient model definition
-      Appointment.belongsTo(patient, { foreignKey: 'patientId' });
-      Appointment.belongsTo(doctor, { foreignKey: 'doctorId' });
+
+      models.appointment.belongsTo(models.patient, { foreignKey: "patientId" });
+      models.appointment.belongsTo(models.doctor, { foreignKey: "doctorId" });
     }
   }
   Appointment.init(
@@ -25,25 +24,23 @@ const appointment = (sequelize, DataTypes) => {
       },
       observations: {
         type: DataTypes.JSON,
-        allowNull: true // You may change this to false if observations are required
+        allowNull: true, // You may change this to false if observations are required
       },
       day: {
         type: DataTypes.DATEONLY,
-        allowNull: false
+        allowNull: false,
       },
       time: {
         type: DataTypes.TIME,
-        allowNull: false
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
-        defaultValue: DataTypes.literal("CURRENT_TIMESTAMP"),
       },
       updatedAt: {
         allowNull: false,
         type: DataTypes.DATE,
-        defaultValue: DataTypes.literal("CURRENT_TIMESTAMP"),
       },
       deletedAt: {
         allowNull: true,
@@ -53,11 +50,10 @@ const appointment = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "appointment",
+      tableName: "appointment",
       paranoid: true,
       timestamps: true,
     }
   );
   return Appointment;
 };
-
-export default appointment;
