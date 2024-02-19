@@ -30,6 +30,10 @@ const router = Router();
      *     responses:
      *      200:
      *        description: Success
+     *      404:
+     *        description: Not Found
+     *      500:
+     *        description: Server Error
      */
 router.post("/login", authControllers.login);
 router.post("/logout", );
