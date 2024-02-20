@@ -1,20 +1,21 @@
 import React from "react";
 import { Footer } from "../components/footer";
+import Navbar from "../components/navbar";
 
 export default function SobreNosotros() {
   return (
     <>
-      <div className="text-black">NavBar</div>
+      <Navbar />
 
-      <div className="font-Inter text-black">
-        <div className="flex h-[250px] w-full bg-[url('/nosotros.png')] bg-cover bg-center">
+      <div className="font-Inter text-black flex flex-col items-center">
+        <div className="max-w-7xl flex h-[250px] w-full bg-[url('/nosotros.png')] bg-cover bg-center">
           <div className="flex flex-col gap-4 pl-4 pt-16 font-Inter text-4xl font-bold text-primary">
             <h2>Transformá tu salud.</h2>
             <h2>Descubrí HealthMate</h2>
           </div>
         </div>
 
-        <div className="mb-32 flex flex-col gap-8 px-4 pt-8 text-[18px] font-semibold">
+        <div className="max-w-6xl mb-32 flex flex-col gap-8 px-4 pt-8 text-[16px] font-medium">
           <p>
             Nuestra misión es brindar atención médica de la más alta calidad,
             centrada en el paciente y basada en los últimos avances médicos y

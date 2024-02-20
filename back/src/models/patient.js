@@ -1,8 +1,6 @@
-
 import { Model } from "sequelize";
-import patientFiles from "./patientFiles.js";
-import appointment from "./appointment.js";
-const patient = (sequelize, DataTypes) => {
+
+export default (sequelize, DataTypes) => {
   class Patient extends Model {
     /**
      * Helper method for defining associations.
@@ -12,8 +10,8 @@ const patient = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       // In your Patient model definition
-      Patient.hasMany(patientFiles, { foreignKey: 'patientId' });
-      Patient.hasMany(appointment, { foreignKey: 'patientId' });
+      models.patient.hasMany(models.patientFiles, { foreignKey: "patientId" });
+      models.patient.hasMany(models.appointment, { foreignKey: "patientId" });
     }
   }
   Patient.init(
@@ -79,5 +77,3 @@ const patient = (sequelize, DataTypes) => {
   );
   return Patient;
 };
-
-export default patient;
