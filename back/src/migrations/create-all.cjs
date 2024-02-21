@@ -9,6 +9,7 @@ module.exports = {
           type: Sequelize.UUID,
           allowNull: false,
           primaryKey: true,
+          defaultValue: Sequelize.UUIDV4,
         },
         name: {
           type: Sequelize.STRING,
@@ -35,7 +36,11 @@ module.exports = {
           allowNull: false,
           unique: true,
         },
-        active: { type: Sequelize.BOOLEAN, allowNull: false, default: false },
+        active: {
+          type: Sequelize.BOOLEAN,
+          allowNull: false,
+          defaultValue: false,
+        },
         email: {
           type: Sequelize.STRING,
           unique: true,
@@ -104,7 +109,6 @@ module.exports = {
         },
         patientId: {
           type: Sequelize.UUID,
-          allowNull: false,
           references: {
             model: "patients",
             key: "id",
@@ -138,6 +142,7 @@ module.exports = {
           type: Sequelize.UUID,
           allowNull: false,
           primaryKey: true,
+          defaultValue: Sequelize.UUIDV4,
         },
         name: {
           type: Sequelize.STRING,
@@ -159,7 +164,11 @@ module.exports = {
             },
           },
         },
-        active: { type: Sequelize.BOOLEAN, allowNull: false, default: false },
+        active: {
+          type: Sequelize.BOOLEAN,
+          allowNull: false,
+          defaultValue: false,
+        },
         email: {
           type: Sequelize.STRING,
           unique: true,
@@ -221,6 +230,7 @@ module.exports = {
           type: Sequelize.UUID,
           allowNull: false,
           primaryKey: true,
+          defaultValue: Sequelize.UUIDV4,
         },
         observations: {
           type: Sequelize.JSON,
@@ -236,7 +246,6 @@ module.exports = {
         },
         doctorId: {
           type: Sequelize.UUID,
-          allowNull: false,
           references: {
             model: "doctors",
             key: "id",
@@ -246,7 +255,6 @@ module.exports = {
         },
         patientId: {
           type: Sequelize.UUID,
-          allowNull: false,
           references: {
             model: "patients",
             key: "id",
@@ -310,27 +318,13 @@ module.exports = {
       }
     );
     await queryInterface.createTable("doctors_specialties", {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER,
-      },
       doctorId: {
         type: Sequelize.UUID,
-        references: {
-          model: "doctors",
-          key: "id",
-        },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
       specialtyId: {
         type: Sequelize.INTEGER,
-        references: {
-          model: "specialties",
-          key: "id",
-        },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },

@@ -20,6 +20,7 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.UUIDV4,
         allowNull: false,
         primaryKey: true,
+        defaultValue: DataTypes.UUIDV4,
       },
       name: {
         type: DataTypes.STRING,
@@ -42,7 +43,11 @@ export default (sequelize, DataTypes) => {
         },
       },
       identity_card: { type: DataTypes.STRING, allowNull: false, unique: true },
-      active: { type: DataTypes.BOOLEAN, allowNull: false, default: false },
+      active: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
       email: {
         type: DataTypes.STRING,
         unique: true,
