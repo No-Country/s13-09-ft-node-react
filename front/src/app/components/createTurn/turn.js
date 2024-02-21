@@ -20,6 +20,20 @@ export const especialidades = [
     { name: "Hematología", ubi: [] },
     { name: "Reumatología", ubi: [] }
   ];
+  export const practicaMedica = [
+    { name: "Examen de la Piel", ubi: [] },
+    { name: "Crioterapia ", ubi: [] },
+    { name: "Cirugía Dermatológica", ubi: [] },
+    { name: "Láserterapia", ubi: [] },
+    { name: "Dermabrasión", ubi: [] },
+    { name: "Peeling Químico", ubi: [] },
+    { name: "Terapia Fotodinámica", ubi: [] },
+    { name: "Electrocirugía", ubi: [] },
+    { name: "Terapia Topical", ubi: [] },
+    { name: "Biopsia Cutánea", ubi: [] },
+    { name: "Inyecciones de Botox", ubi: [] },
+    { name: "Manejo de Enfermedades Infecciosas", ubi: [] },
+  ];
   
 export const hospitalDirection = [
     { name: "Sanatorio de la Trinidad -Palermo ", ubi: [-34.5750938, -58.4240719]  ,calle:"Av. Cerviño 4720, CABA"},

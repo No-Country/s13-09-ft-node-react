@@ -4,7 +4,7 @@ import { TemplateCreateTurn, TemplateInputCreateTurn } from "../template";
 import {Mapbox} from "../mapbox"
 import Link from "next/link";
 import Calendar from 'react-calendar';
-import { especialidades,hospitalDirection } from "../createTurn/turn";
+import { especialidades,hospitalDirection,practicaMedica } from "../createTurn/turn";
 
 import 'react-calendar/dist/Calendar.css';
 import "./style.css"
@@ -65,7 +65,7 @@ export function CreateTurn() {
         { isOpenEspecialidad ? <>
             <div className="flex flex-col gap-4 justify-center items-center ">
                 <TemplateInputCreateTurn type="Especialidad" dataArray={especialidades} dataDefault={especialidad } modData={(dataMod)=>setEspecialidad(dataMod)}/>
-                <TemplateInputCreateTurn type="Práctica Médica" dataArray={hospitalDirection} dataDefault={practMedica } modData={(dataMod)=>setPractMedica(dataMod)}/>
+                <TemplateInputCreateTurn type="Práctica Médica" dataArray={practicaMedica} dataDefault={practMedica } modData={(dataMod)=>setPractMedica(dataMod)}/>
                 <TemplateInputCreateTurn type="Centro Médico" dataArray={hospitalDirection} dataDefault={centroMedico } modData={(dataMod)=>setCentroMedico(dataMod)}/>
             </div>
             <div className="flex gap-4 flex-wrap justify-between items-center max-lg:justify-center">
