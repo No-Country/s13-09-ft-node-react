@@ -21,7 +21,7 @@ async function getAppointments(input){
     return appointments
 
   } catch (error) {
-    console.log(error.name);
+
     if(error.name == "SequelizeDatabaseError") return "bad"
     throw error
 
@@ -65,7 +65,7 @@ async function createAppointment(body){
     return appointment
 
   } catch (error) {
-    console.log(error);
+    
     if(error.name == "SequelizeDatabaseError" || error.name == "SequelizeUniqueConstraintError" || error.name == "SequelizeValidationError") return "bad"
     throw error
 
