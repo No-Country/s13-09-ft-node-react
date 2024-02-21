@@ -1,0 +1,19 @@
+.react-calendar{
+    height: auto !important;
+    width: 500px !important;
+    border: none !important;
+}
+@media(max-width:765px){
+    .react-calendar{
+        width: 100% !important;
+    }
+}
+
+.mapboxgl-popup-close-button{
+    font-size: 1.5rem !important;
+    position: static !important;
+}
+.mapboxgl-popup-content{
+    display: flex !important;
+    gap: 1rem !important;
+}

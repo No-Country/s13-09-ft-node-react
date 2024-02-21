@@ -10,7 +10,7 @@ export default (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.specialty.belongsToMany(models.doctor, {
-        through: "doctor_specialties",
+        through: "doctors_specialties",
         foreignKey: "specialtyId",
       });
     }

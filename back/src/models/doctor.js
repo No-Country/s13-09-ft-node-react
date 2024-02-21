@@ -10,7 +10,7 @@ export default (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.doctor.belongsToMany(models.specialty, {
-        through: "doctor_specialties",
+        through: "doctors_specialties",
         foreignKey: "doctorId",
       });
       models.doctor.hasMany(models.appointment, { foreignKey: "doctorId" });
@@ -44,7 +44,11 @@ export default (sequelize, DataTypes) => {
           },
         },
       },
-      active: { type: DataTypes.BOOLEAN, allowNull: false, default: false },
+      active: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
       email: {
         type: DataTypes.STRING,
         unique: true,
