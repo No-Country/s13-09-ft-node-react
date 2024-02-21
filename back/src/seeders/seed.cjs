@@ -6,7 +6,7 @@ module.exports = {
 
     await queryInterface.bulkInsert("patients", [
       {
-        id: "fc07b157-2cc8-41da-b00b-d7e0aa90d8b1",
+        id: "76cc92a5-af61-486f-bf87-43e2dbb6a159",
         name: "John",
         surname: "Doe",
         identity_card: "123456715",
@@ -23,7 +23,7 @@ module.exports = {
 
     await queryInterface.bulkInsert("doctors", [
       {
-        id: "c3f5fde5-74cf-43e5-bb86-5e894f55ff9d",
+        id: "5f86b282-b78d-4c54-8918-80b5353e2a8a",
         name: "Jane",
         surname: "Smith",
         active: true,
@@ -39,7 +39,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        id: "a6f42e24-4b87-4d1d-89b4-33ef18d9f215",
+        id: "e7eb8dd8-0b5e-4c84-b582-c9d35b40d0d6",
         name: "Admin",
         surname: "Smith",
         active: false,
@@ -62,7 +62,7 @@ module.exports = {
         id: 1,
         description: "Patient file description 1",
         filePath: "/path/to/file1",
-        patientId: "fc07b157-2cc8-41da-b00b-d7e0aa90d8b1",
+        patientId: "76cc92a5-af61-486f-bf87-43e2dbb6a159",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -81,9 +81,9 @@ module.exports = {
 
     await queryInterface.bulkInsert("appointments", [
       {
-        id: "29e801e2-aeec-4e6d-9ab3-8d40af6a8e65",
-        patientId: "fc07b157-2cc8-41da-b00b-d7e0aa90d8b1",
-        doctorId: "c3f5fde5-74cf-43e5-bb86-5e894f55ff9d",
+        id: "d08e1992-00a3-4a85-a33a-3a06d5f11a4d",
+        patientId: "76cc92a5-af61-486f-bf87-43e2dbb6a159",
+        doctorId: "5f86b282-b78d-4c54-8918-80b5353e2a8a",
         observations: JSON.stringify({}),
         day: "2024-02-16", // Example date
         time: "09:00:00", // Example time
@@ -95,7 +95,7 @@ module.exports = {
 
     await queryInterface.bulkInsert("doctors_specialties", [
       {
-        doctorId: "c3f5fde5-74cf-43e5-bb86-5e894f55ff9d",
+        doctorId: "5f86b282-b78d-4c54-8918-80b5353e2a8a",
         specialtyId: "1",
         createdAt: new Date(),
         updatedAt: new Date(),

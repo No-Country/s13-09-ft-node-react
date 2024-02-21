@@ -1,28 +1,45 @@
 import { Router } from "express";
 import {appointmentControllers} from '../controllers/index.controllers.js'
+import { createAppointmentValidation, getAppointmentsQuery } from "../middleware/validations/appointment-validation.mdw.js";
 
 
 const router = Router();
 
 /** GET Methods */
-    /**
-     * @openapi
-     * '/appointment/':
-     *  get:
-     *     tags:
-     *     - Appointment Controller
-     *     summary: Get admin/doctor appointment (all or query - id / patientId / doctorId -)
-     *     responses:
-     *      200:
-     *        description: Success
-     *      400:
-     *        description: Bad request
-     *      404:
-     *        description: Not found
-     *      500:
-     *        description: Server Error
-     */
-router.get("/", appointmentControllers.getAppointments)
+/**
+ * @openapi
+ * '/appointment/':
+ *  get:
+ *    tags:
+ *      - Appointment Controller
+ *    summary: Get admin/doctor appointment (all or by specific criteria)
+ *    parameters:
+ *      - in: query
+ *        name: id
+ *        schema:
+ *          type: string
+ *        description: The appointment ID.
+ *      - in: query
+ *        name: patientId
+ *        schema:
+ *          type: string
+ *        description: The ID of the patient associated with the appointment.
+ *      - in: query
+ *        name: doctorId
+ *        schema:
+ *          type: string
+ *        description: The ID of the doctor associated with the appointment.
+ *    responses:
+ *      200:
+ *        description: Success
+ *      400:
+ *        description: Bad request
+ *      404:
+ *        description: Not found
+ *      500:
+ *        description: Server Error
+ */
+router.get("/", [getAppointmentsQuery],   appointmentControllers.getAppointments)
 
     /**
      * @openapi
@@ -34,7 +51,7 @@ router.get("/", appointmentControllers.getAppointments)
      *     parameters:
      *      - name: patientId
      *        in: path
-     *        description: the patient id
+     *        description: The patient ID
      *        required: true
      *     responses:
      *      200:
@@ -65,7 +82,6 @@ router.get("/my/:patientId", appointmentControllers.getUserAppointments)
      *            required:
      *              - patientId
      *              - doctorId
-     *              - id
      *              - observations
      *              - day
      *              - time
@@ -76,9 +92,6 @@ router.get("/my/:patientId", appointmentControllers.getUserAppointments)
      *              doctorId:
      *                type: uuid,
      *                default: c3f5fde5-74cf-43e5-bb86-5e894f55ff9d
-     *              id:
-     *                type: uuid
-     *                default: c3f5fde5-74cf-43e5-bb86-5e894f55ff6d
      *              observations:
      *                type: json
      *                default: {"observation":"Something"}
@@ -98,7 +111,7 @@ router.get("/my/:patientId", appointmentControllers.getUserAppointments)
      *      500:
      *        description: Server Error
      */
-router.post("/", appointmentControllers.createAppointment)
+router.post("/", [createAppointmentValidation], appointmentControllers.createAppointment)
 
 /** PUT Methods */
     /**
@@ -111,7 +124,7 @@ router.post("/", appointmentControllers.createAppointment)
      *     parameters:
      *      - name: id
      *        in: path
-     *        description: appointment id
+     *        description: The appointment ID
      *        required: true
      *     requestBody:
      *      content:
@@ -151,7 +164,7 @@ router.put("/:id", appointmentControllers.modifyAppointment)
      *     parameters:
      *      - name: id
      *        in: path
-     *        description: appointment id
+     *        description: The appointment ID
      *        required: true
      *     responses:
      *      204:
