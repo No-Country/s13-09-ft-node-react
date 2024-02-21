@@ -21,7 +21,7 @@ async function getAppointments(input){
     return appointments
 
   } catch (error) {
-
+    console.log(error.name);
     if(error.name == "SequelizeDatabaseError") return "bad"
     throw error
 
@@ -49,13 +49,12 @@ async function getUserAppointments(id){
 
 async function createAppointment(body){
   
-  const {doctorId, patientId, id, observations, day, time} = body
+  const {doctorId, patientId, observations, day, time} = body
   
   try {
     const appointment = await models.appointment.create({
       doctorId,
       patientId,
-      id,
       observations,
       day,
       time
@@ -66,7 +65,7 @@ async function createAppointment(body){
     return appointment
 
   } catch (error) {
-
+    console.log(error);
     if(error.name == "SequelizeDatabaseError" || error.name == "SequelizeUniqueConstraintError" || error.name == "SequelizeValidationError") return "bad"
     throw error
 
