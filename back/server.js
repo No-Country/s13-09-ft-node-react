@@ -1,6 +1,7 @@
 import "dotenv/config";
 
-import db from "./src/models/index.js";
+import db, { models } from "./src/models/index.js";
+
 import server from "./src/app.js";
 
 (async () => {

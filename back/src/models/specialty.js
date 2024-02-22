@@ -9,6 +9,10 @@ export default (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.specialty.belongsToMany(models.doctor, {
+        through: "doctors_specialties",
+        foreignKey: "specialtyId",
+      });
     }
   }
   Specialty.init(
@@ -23,24 +27,14 @@ export default (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.STRING,
       },
-      createdAt: {
-        allowNull: false,
-        type: DataTypes.DATE,
-      },
-      updatedAt: {
-        allowNull: false,
-        type: DataTypes.DATE,
-      },
-      deletedAt: {
-        allowNull: true,
-        type: DataTypes.DATE,
-      },
     },
     {
       sequelize,
       modelName: "specialty",
+      tableName: "specialties",
       paranoid: true,
       timestamps: true,
+      freezeTableName: true,
     }
   );
   return Specialty;

@@ -1,6 +1,11 @@
-import { TempalteCartDashBoard,TempalteCartService } from "@/app/components/template"
+import { TemplateCartDashBoard,TemplateCartService } from "../components/template"
 import { Footer } from "../components/footer"
 
+export const metadata = {
+    title: 'Dashboard | HealthMate',
+    description: 'Dashboard',
+};
+  
 const dashboard = [{imgSvg:"/turno.svg",title:"Sacar un turno"},{imgSvg:"/tramite.svg",title:"Iniciar un tramite"},{imgSvg:"/cartilla.svg",title:"Cartilla medica"}] 
 const dashboardService = [{imgSvg:"/doctor.svg",title:"Llamando al Doctor",description:"Realizá consultas médicas por videollamada desde tu celular "},{imgSvg:"/turno.svg",title:"Turnos",description:"Sacá Turnos para nuestros Centros Médicos de forma simple y rápida"},{imgSvg:"/test.svg",title:"Laboratorio",description:"Accedé a los resultados que te realizaste en nuestros Centros "},{imgSvg:"/hospital.svg",title:"Guardia",description:"Sacá turno en la guardia de nuestros Sanatorios "}] 
 
@@ -21,13 +26,13 @@ export default function DashBoard() {
             <div className="flex gap-12 flex-col max-md:items-center">
                 <h2 className="text-[#0234A1] text-3xl font-semibold">¿Qué necesitás hoy?</h2>
                 <div className="flex gap-8 flex-wrap max-md:items-center max-md:justify-center">
-                    {dashboard.map(item => <TempalteCartDashBoard title={item.title} imgSvg={item.imgSvg} key={ item.title} />)}
+                    {dashboard.map(item => <TemplateCartDashBoard title={item.title} imgSvg={item.imgSvg} key={ item.title} />)}
                 </div>
             </div>
             <div className="flex gap-12 flex-col max-md:items-center">
-                <h2 className="text-[#0234A1] text-3xl font-semibold">Disfrutá de todos nuestros servicios</h2>
+                <h2 className="text-[#0234A1] text-3xl font-semibold max-md:text-center">Disfrutá de todos nuestros servicios</h2>
                 <div className="flex gap-8 flex-wrap max-md:items-center max-md:justify-center">
-                    {dashboardService.map(item => <TempalteCartService title={item.title} imgSvg={item.imgSvg} key={ item.title} description={item.description}/>)}
+                    {dashboardService.map(item => <TemplateCartService title={item.title} imgSvg={item.imgSvg} key={ item.title} description={item.description}/>)}
                 </div>
             </div>
         </div>

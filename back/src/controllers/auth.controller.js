@@ -6,6 +6,7 @@ async function login(req, res) {
   try {
     const { email, password } = req.body;
     const user = await authServices.login(email);
+    
     if (!user) return HttpResponse.notFound(res, { message: "fallo" });
 
     const isValid = await bcrypt.compare(password, user.password);
@@ -19,9 +20,7 @@ async function login(req, res) {
       return res.status(200).header("Authorization", token).json(user);
     }
   } catch (error) {
-    return {
-      message: error,
-    };
+    return HttpResponse.serverError(res)
   }
 }
 
