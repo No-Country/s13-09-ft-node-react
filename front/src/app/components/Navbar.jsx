@@ -35,7 +35,7 @@ const Navbar = () => {
                     </div>
                     <div className="hidden md:flex">
                         <div className="ml-4 flex items-center space-x-4">
-                            <Link href="/about" onClick={closeNavbar}>
+                            <Link href="/nosotros" onClick={closeNavbar}>
                                 <div className="text-slate-600 hover:text-slate-50 px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-600">
                                     Nosotros
                                 </div>
