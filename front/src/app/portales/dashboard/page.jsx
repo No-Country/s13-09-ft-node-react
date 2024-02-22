@@ -4,8 +4,7 @@ import DoctorSidebar from "../components/DoctorSidebar";
 import PatientSidebar from "../components/PatientSidebar";
 import SearchBar from "../../ui/SearchBar";
 import Clock from "../../ui/Clock";
-import Notifications from "@/app/ui/svg/Notifications ";
-
+import Notifications from "@/app/ui/svg/Notifications";
 
 const DashboardPage = ({ userType }) => {
     return (
@@ -32,7 +31,7 @@ const DashboardPage = ({ userType }) => {
                             <Image
                                 width={60}
                                 height={60}
-                                src="/assets/doc.jpg"
+                                src="/assets/doctor.png"
                                 alt="doc img"
                                 className="mr-4 h-8 w-8 rounded-full"
                             />
@@ -41,6 +40,33 @@ const DashboardPage = ({ userType }) => {
                             </span>
                         </div>
                     </div>
+
+                    {/* Tarjeta de tareas asignadas */}
+                    {userType === "medico" && (
+                        <div className="p-4 border rounded-lg shadow-md">
+                            <h2 className="text-lg font-semibold text-gray-900 mb-2">
+                                Tareas asignadas recientes: 3
+                            </h2>
+                            <table className="w-full">
+                                <tbody>
+                                    <tr>
+                                        <td>Rondas de pacientes</td>
+                                        <td>Revision de resultados de laboratorio</td>
+                                        <td>Procedimientos quirurgicos</td>
+                                    </tr>
+                                    {/* Add more rows as needed */}
+                                </tbody>
+                            </table>
+                            {/* Doctor's photo */}
+                            <Image
+                                width={80}
+                                height={80}
+                                src="/assets/doctor.png"
+                                alt="doc img"
+                                className="ml-auto"
+                            />
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
