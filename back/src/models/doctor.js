@@ -10,7 +10,7 @@ export default (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.doctor.belongsToMany(models.specialty, {
-        through: "DoctorSpecialties",
+        through: "doctors_specialties",
         foreignKey: "doctorId",
       });
       models.doctor.hasMany(models.appointment, { foreignKey: "doctorId" });
@@ -22,6 +22,7 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.UUID,
         allowNull: false,
         primaryKey: true,
+        defaultValue: DataTypes.UUIDV4
       },
       name: {
         type: DataTypes.STRING,
@@ -43,7 +44,11 @@ export default (sequelize, DataTypes) => {
           },
         },
       },
-      active: { type: DataTypes.BOOLEAN, default: false },
+      active: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
       email: {
         type: DataTypes.STRING,
         unique: true,
@@ -70,31 +75,21 @@ export default (sequelize, DataTypes) => {
       },
       role: {
         type: DataTypes.STRING,
+        allowNull: false,
         defaultValue: "doctor",
       },
       schedule: {
         type: DataTypes.JSON,
         allowNull: false,
       },
-      createdAt: {
-        allowNull: false,
-        type: DataTypes.DATE,
-      },
-      updatedAt: {
-        allowNull: false,
-        type: DataTypes.DATE,
-      },
-      deletedAt: {
-        allowNull: true,
-        type: DataTypes.DATE,
-      },
     },
     {
       sequelize,
       modelName: "doctor",
-      tableName: "doctor",
+      tableName: "doctors",
       paranoid: true,
       timestamps: true,
+      freezeTableName: true,
     }
   );
   return Doctor;

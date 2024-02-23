@@ -10,8 +10,9 @@ export default (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       // In your Patient model definition
-
-      models.appointment.belongsTo(models.patient, { foreignKey: "patientId" });
+      models.appointment.belongsTo(models.patient, {
+        foreignKey: "patientId",
+      });
       models.appointment.belongsTo(models.doctor, { foreignKey: "doctorId" });
     }
   }
@@ -21,10 +22,11 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.UUID,
         allowNull: false,
         primaryKey: true,
+        defaultValue: DataTypes.UUIDV4,
       },
       observations: {
         type: DataTypes.JSON,
-        allowNull: true, // You may change this to false if observations are required
+        allowNull: false,
       },
       day: {
         type: DataTypes.DATEONLY,
@@ -34,25 +36,14 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.TIME,
         allowNull: false,
       },
-      createdAt: {
-        allowNull: false,
-        type: DataTypes.DATE,
-      },
-      updatedAt: {
-        allowNull: false,
-        type: DataTypes.DATE,
-      },
-      deletedAt: {
-        allowNull: true,
-        type: DataTypes.DATE,
-      },
     },
     {
       sequelize,
       modelName: "appointment",
-      tableName: "appointment",
+      tableName: "appointments",
       paranoid: true,
       timestamps: true,
+      freezeTableName: true,
     }
   );
   return Appointment;
