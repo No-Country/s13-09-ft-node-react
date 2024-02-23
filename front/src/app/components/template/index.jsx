@@ -5,7 +5,7 @@ import { Inter } from "next/font/google";
 const inter = Inter({subsets: ['latin'], weight: '500'});
 
 export function TemplateCartDashBoard({ imgSvg, title }) {
-    return <Link href={"/turn"} className="text-black flex items-center justify-between p-4 border-[1px] border-[#ddd] rounded-lg w-[400px] h-[112px] max-md:w-[350px] max-md:h-[90px] shadow-[0_0_5px_1px_#ddd] hover:scale-105">
+    return <Link href={"/createTurn"} className="text-black flex items-center justify-between p-4 border-[1px] border-[#ddd] rounded-lg w-[400px] h-[112px] max-md:w-[350px] max-md:h-[90px] shadow-[0_0_5px_1px_#ddd] hover:scale-105">
         <div className="flex gap-4 items-center">
             <img src={imgSvg} alt={title} />
             <h2 className="text-xl text-[#111928]">{title}</h2>

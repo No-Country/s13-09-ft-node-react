@@ -11,7 +11,7 @@ import "./style.css"
 
 const createTurn = [{ title: "Especialidad y lugar",default:true,id:"especialidad" }, { title: "Profesional y horario",default:false,id:"profesional" }, { title: "Confirmacion",default:false,id:"confirmacion" }]
 
-export function CreateTurn() {
+export function CreateTurnComponent() {
     const [isOpenEspecialidad, setIsOpenEspecialidad] = useState(true)
     const [isOpenProfesional,setIsOpenProfesional]= useState(false)
     const [isOpenConfirmacion, setIsOpenConfirmacion] = useState(false)
@@ -48,7 +48,17 @@ export function CreateTurn() {
         month: 'long',   
         day: 'numeric'    
     };
-      
+    const handleConfirmar = (e) => {
+        e.preventDefault()
+        setIsOpenProfesional(true);
+        setIsOpenEspecialidad(false);
+        setIsOpenConfirmacion(false)
+        // fetch('https://jsonplaceholder.typicode.com/posts', {
+            
+        // })
+        // .then((response) => response.json())
+        // .then((json) => console.log(json));
+    }
     return <div className="text-black p-4 pt-8 pb-8 h-full flex flex-col justify-between gap-[5rem] max-w-[1080px] m-auto mt-[3.3rem] mb-[3.3rem] max-md:gap-12">
         <div className="flex justify-between gap-2 items-center">
             {
@@ -121,7 +131,7 @@ export function CreateTurn() {
             </div>
             <div className="flex gap-4 flex-wrap justify-between items-center max-lg:justify-center">
                 <Link href={"/dashboard"} className="max-md:w-full flex justify-center items-center w-[510px] h-[60px]  max-md:h-[40px] text-[#015190] border-[1px] border-[#015190] hover:opacity-90 rounded-lg ">Cancelar</Link>
-                <button className="max-md:w-full w-[510px] h-[60px] max-md:h-[40px] text-white bg-[#015190] hover:opacity-90 rounded-lg " onClick={()=>{setIsOpenProfesional(true),setIsOpenEspecialidad(false),setIsOpenConfirmacion(false)}}>Confirmar</button>
+                <button onClick={handleConfirmar} className="max-md:w-full w-[510px] h-[60px] max-md:h-[40px] text-white bg-[#015190] hover:opacity-90 rounded-lg ">Confirmar</button>
             </div>
         </> : null}
     </div>

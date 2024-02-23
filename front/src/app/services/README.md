@@ -1,1 +1,0 @@
-<!-- Aqui pueden ir funciones relacionadas a peticiones HTTP -->
