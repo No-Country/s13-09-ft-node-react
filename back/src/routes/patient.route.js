@@ -130,7 +130,7 @@ router.get("/:id", patientControllers.getPatient);
  *      500:
  *        description: Server Error
  */
-router.put("/:id", patientControllers.updatePatient);
+router.patch("/:id", patientControllers.updatePatient);
 
 /** DELETE methods */
 /**
