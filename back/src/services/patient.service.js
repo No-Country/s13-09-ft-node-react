@@ -2,7 +2,11 @@ import { models } from "../models/index.js";
 import { encrypt } from "../helpers/handleBcrypt.js"
 async function getPatients() {
     try {
-        const patientsList = await models.patient.findAll({});
+        const patientsList = await models.patient.findAll({
+            attributes: {
+                exclude: ['password']
+            },
+        });
         if (patientsList.length == 0) return null
         return patientsList
     } catch (error) {
@@ -14,7 +18,10 @@ async function getPatients() {
 async function getPatient(id) {
     try {
         const patient = await models.patient.findOne({
-            where: { id: id }
+            where: { id: id },
+            attributes: {
+                exclude: ['password']
+            },
         });
         if (!patient) return null
         return patient
@@ -27,10 +34,11 @@ async function getPatient(id) {
 async function createPatient(data) {
     const { name, surname, identity_card, email, password, mobile } = data
     try {
-        const checkEmail = await models.patient.findOne({ where: { email: email }});
-        const checkIdentityCard = await models.patient.findOne({where: { identity_card: identity_card }});
+        const checkEmail = await models.patient.findOne({ where: { email: email } });
+        const checkIdentityCard = await models.patient.findOne({ where: { identity_card: identity_card } });
         if (checkEmail || checkIdentityCard) return 'ALREADY PATIENT';
         const hashedPassword = await encrypt(password);
+        console.log(hashedPassword)
         const newPatient = await models.patient.create({
             name: name,
             surname: surname,
@@ -39,6 +47,7 @@ async function createPatient(data) {
             password: hashedPassword,
             mobile: mobile
         });
+
 
         if (!newPatient) return null
 
@@ -52,10 +61,16 @@ async function createPatient(data) {
 
 async function updatePatient(id, changes) {
     try {
+        if (changes.hasOwnProperty('password')) {
+            delete changes['password'];
+        }
         const updatedPatient = await models.patient.update({...changes }, {
             where: {
                 id
-            }
+            },
+            attributes: {
+                exclude: ['password']
+            },
         })
         return updatedPatient
     } catch (error) {
@@ -69,7 +84,10 @@ async function deletePatient(id) {
         const removePatient = await models.patient.destroy({
             where: {
                 id
-            }
+            },
+            attributes: {
+                exclude: ['password']
+            },
         })
         return removePatient
     } catch (error) {
