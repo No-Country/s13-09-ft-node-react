@@ -4,8 +4,8 @@ import { models } from "../models/index.js";
 
 async function register(req, res) {
     try {
-        const { data } = req.body;
-        const newUser = await patientServices.register(data);
+        const data = req.body;
+        const newUser = await patientServices.createPatient(data);
         if (newUser === "ALREADY PATIENT") return HttpResponse.badRequest(res, { error: 'User already registered' });
         return HttpResponse.created(res, { newUser });
     } catch (error) {
