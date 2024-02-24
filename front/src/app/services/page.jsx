@@ -1,7 +1,11 @@
 import { Footer } from "../components/footer"
-const listDocts = ["Salud mental","Diabetología","Fisiatría","Hematología","Infectología","Deportología","Medicina familiar","Nefrología","Neumología","Psícología","Ginecología","Dermatología"]
+import Navbar from "../components/Navbar"
+
+const listDocts = ["Salud mental", "Diabetología", "Fisiatría", "Hematología", "Infectología", "Deportología", "Medicina familiar", "Nefrología", "Neumología", "Psícología", "Ginecología", "Dermatología"]
 export default function  Services(){
     return <>
+        <Navbar></Navbar>
+        
     <div className="text-black max-w-[1295px] m-auto mt-8 bg-[#fff] max-xl:w-[90%]">
         <div className="relative">
             <img src="/services.svg" alt="services" />
