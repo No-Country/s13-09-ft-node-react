@@ -2,9 +2,9 @@ import { models } from "../models/index.js";
 import { encrypt } from "../helpers/handleBcrypt.js"
 async function getPatients() {
     try {
-        const patientList = await models.patient.findAll({});
+        const patientsList = await models.patient.findAll({});
         if (patientsList.length == 0) return null
-        return patientList
+        return patientsList
     } catch (error) {
         if (error.name == "SequelizeDatabaseError") return "bad"
         throw error
@@ -27,10 +27,10 @@ async function getPatient(id) {
 async function createPatient(data) {
     const { name, surname, identity_card, email, password, mobile } = data
     try {
-        const checkEmail = await models.patient.findOne({ email: email });
-        const checkIdentityCard = await models.patient.findOne({ identity_card: identity_card });
-        if (checkEmail || checkIdentityCard) return 'ALREADY PATIENT'
-        const hashedPassword = await encrypt(password)
+        const checkEmail = await models.patient.findOne({ where: { email: email }});
+        const checkIdentityCard = await models.patient.findOne({where: { identity_card: identity_card }});
+        if (checkEmail || checkIdentityCard) return 'ALREADY PATIENT';
+        const hashedPassword = await encrypt(password);
         const newPatient = await models.patient.create({
             name: name,
             surname: surname,
