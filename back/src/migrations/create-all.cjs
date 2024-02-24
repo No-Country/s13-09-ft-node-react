@@ -9,6 +9,7 @@ module.exports = {
           type: Sequelize.UUID,
           allowNull: false,
           primaryKey: true,
+          defaultValue: Sequelize.UUIDV4,
         },
         name: {
           type: Sequelize.STRING,
@@ -35,7 +36,11 @@ module.exports = {
           allowNull: false,
           unique: true,
         },
-        active: { type: Sequelize.BOOLEAN, default: false },
+        active: {
+          type: Sequelize.BOOLEAN,
+          allowNull: false,
+          defaultValue: false,
+        },
         email: {
           type: Sequelize.STRING,
           unique: true,
@@ -82,42 +87,54 @@ module.exports = {
       {
         paranoid: true,
         timestamps: true,
+        freezeTableName: true,
       }
     );
-    await queryInterface.createTable("patientFiles", {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER,
-      },
-      description: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      filePath: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      patientId: {
-        type: Sequelize.UUID,
-        allowNull: false,
-        references: {
-          model: "patients",
-          key: "id",
+    await queryInterface.createTable(
+      "patientFiles",
+      {
+        id: {
+          allowNull: false,
+          autoIncrement: true,
+          primaryKey: true,
+          type: Sequelize.INTEGER,
         },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE",
+        description: {
+          type: Sequelize.TEXT,
+          allowNull: false,
+        },
+        filePath: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
+        patientId: {
+          type: Sequelize.UUID,
+          references: {
+            model: "patients",
+            key: "id",
+          },
+          onUpdate: "CASCADE",
+          onDelete: "CASCADE",
+        },
+        createdAt: {
+          allowNull: false,
+          type: Sequelize.DATE,
+        },
+        updatedAt: {
+          allowNull: false,
+          type: Sequelize.DATE,
+        },
+        deletedAt: {
+          allowNull: true,
+          type: Sequelize.DATE,
+        },
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
-    });
+      {
+        paranoid: true,
+        timestamps: true,
+        freezeTableName: true,
+      }
+    );
     await queryInterface.createTable(
       "doctors",
       {
@@ -125,6 +142,7 @@ module.exports = {
           type: Sequelize.UUID,
           allowNull: false,
           primaryKey: true,
+          defaultValue: Sequelize.UUIDV4,
         },
         name: {
           type: Sequelize.STRING,
@@ -146,7 +164,11 @@ module.exports = {
             },
           },
         },
-        active: { type: Sequelize.BOOLEAN, default: false },
+        active: {
+          type: Sequelize.BOOLEAN,
+          allowNull: false,
+          defaultValue: false,
+        },
         email: {
           type: Sequelize.STRING,
           unique: true,
@@ -173,6 +195,7 @@ module.exports = {
         },
         role: {
           type: Sequelize.STRING,
+          allowNull: false,
           defaultValue: "doctor",
         },
         schedule: {
@@ -197,6 +220,7 @@ module.exports = {
       {
         paranoid: true,
         timestamps: true,
+        freezeTableName: true,
       }
     );
     await queryInterface.createTable(
@@ -206,10 +230,11 @@ module.exports = {
           type: Sequelize.UUID,
           allowNull: false,
           primaryKey: true,
+          defaultValue: Sequelize.UUIDV4,
         },
         observations: {
           type: Sequelize.JSON,
-          allowNull: true, // You may change this to false if observations are required
+          allowNull: false,
         },
         day: {
           type: Sequelize.DATEONLY,
@@ -221,7 +246,6 @@ module.exports = {
         },
         doctorId: {
           type: Sequelize.UUID,
-          allowNull: false,
           references: {
             model: "doctors",
             key: "id",
@@ -231,7 +255,6 @@ module.exports = {
         },
         patientId: {
           type: Sequelize.UUID,
-          allowNull: false,
           references: {
             model: "patients",
             key: "id",
@@ -257,10 +280,11 @@ module.exports = {
       {
         paranoid: true,
         timestamps: true,
+        freezeTableName: true,
       }
     );
     await queryInterface.createTable(
-      "specialty",
+      "specialties",
       {
         id: {
           allowNull: false,
@@ -290,30 +314,17 @@ module.exports = {
       {
         paranoid: true,
         timestamps: true,
+        freezeTableName: true,
       }
     );
-    await queryInterface.createTable("doctorSpecialties", {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER,
-      },
+    await queryInterface.createTable("doctors_specialties", {
       doctorId: {
         type: Sequelize.UUID,
-        references: {
-          model: "doctors",
-          key: "id",
-        },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
       specialtyId: {
         type: Sequelize.INTEGER,
-        references: {
-          model: "specialty",
-          key: "id",
-        },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
@@ -359,10 +370,10 @@ module.exports = {
     //   "DoctorSpecialties",
     //   "DoctorSpecialties_doctorId_fkey"
     // );
-    
+
     //drop tables
-    await queryInterface.dropTable("doctorSpecialties");
-    await queryInterface.dropTable("specialty");
+    await queryInterface.dropTable("doctors_specialties");
+    await queryInterface.dropTable("specialties");
     await queryInterface.dropTable("appointments");
     await queryInterface.dropTable("doctors");
     await queryInterface.dropTable("patientFiles");

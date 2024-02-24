@@ -1,5 +1,6 @@
 import { Router } from "express";
 import authControllers from "../controllers/auth.controller.js";
+import {validateLogin} from "../middleware/validations/auth-validation.mdw.js";
 
 const router = Router();
 
@@ -30,8 +31,12 @@ const router = Router();
      *     responses:
      *      200:
      *        description: Success
+     *      404:
+     *        description: Not Found
+     *      500:
+     *        description: Server Error
      */
-router.post("/login", authControllers.login);
+router.post("/login", [validateLogin], authControllers.login);
 router.post("/logout", );
 
 export default router;

@@ -19,7 +19,7 @@ export default function Login() {
         />
       </div>
       <div className='bg-white text-black p-6 flex flex-col gap-4 w-[770px]'>
-        <Link href='/login' className='flex  items-center'>
+        <Link href='/' className='flex  items-center'>
           <img src={'/icon.webp'} alt='login' width={'50px'} height={'53px'} />
           <h2 className='text-xl font-bold bg-gradient-to-r from-[#0234A1] to-[#415DF9] text-transparent bg-clip-text'>
             HealthMate

@@ -4,7 +4,7 @@ export function Footer() {
     <footer className="bg-gradient-to-t from-[#415DF9]  to-[#1745E8] p-8 pl-4 pr-4 text-transparent text-white">
       <div className="mb-8 mt-8 flex justify-around max-md:flex-col">
         <div>
-          <Link href="/login">
+          <Link href="/">
             <img src={"/logoFooter.svg"} alt="logoFooter" width={"100%"} />
           </Link>
         </div>

@@ -24,31 +24,21 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
       },
       description: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
       filePath: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      createdAt: {
-        allowNull: false,
-        type: DataTypes.DATE,
-      },
-      updatedAt: {
-        allowNull: false,
-        type: DataTypes.DATE,
-      },
-      deletedAt: {
-        allowNull: true,
-        type: DataTypes.DATE,
-      },
     },
     {
       sequelize,
       modelName: "patientFiles",
+      tableName: "patientFiles",
       paranoid: true,
       timestamps: true,
+      freezeTableName: true,
     }
   );
   return PatientFiles;
