@@ -1,8 +1,9 @@
-import Map,{Marker, GeolocateControl,FullscreenControl,NavigationControl,ScaleControl,Popup} from 'react-map-gl';
+"use client"
+import Map, { Marker, GeolocateControl, FullscreenControl, NavigationControl, ScaleControl, Popup } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 
-export function Mapbox({ ubication,direction}) {
+export function Mapbox({ ubication,direction,height}) {
   const coordinates = ubication;
 
   return (
@@ -16,7 +17,8 @@ export function Mapbox({ ubication,direction}) {
                 zoom:14.5
               }}
               
-            style={{width: "100%", height: 500}}
+        style={{ width: "100%", height: height || 500,minHeight:"500px" }}
+        
             mapStyle="mapbox://styles/mapbox/streets-v12"
           >
                 <Marker longitude={coordinates[1]} latitude={coordinates[0]}></Marker>

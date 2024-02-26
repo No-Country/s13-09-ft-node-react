@@ -1,5 +1,6 @@
 import { TemplateCartDashBoard,TemplateCartService } from "../components/template"
 import { Footer } from "../components/footer"
+import Navbar from "../components/Navbar"
 
 export const metadata = {
     title: 'Dashboard | HealthMate',
@@ -11,6 +12,8 @@ const dashboardService = [{imgSvg:"/doctor.svg",title:"Llamando al Doctor",descr
 
 export default function DashBoard() {
     return <>
+        <Navbar/>
+        
         <div className="text-black flex flex-col gap-20 m-auto mt-8 mb-8 w-[80%] max-md:w-[95%] max-md:items-center">
             <div className="flex gap-12 flex-col max-md:items-center">
                 <h2 className="text-[#0234A1] text-3xl font-semibold ">¡Bienvenido Tomas!</h2>
