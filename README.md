@@ -13,7 +13,7 @@
 
 <dl>
   <dd>
-    <b>HealthMat </b>
+    <b>HealthMate </b>
     Nuestrta web app de atención médica es una plataforma en línea que permite a los usuarios acceder a servicios médicos y de salud a través de 
     internet.Los especialistas acceder al listado de sus pacientes, del dia o semana, con todos sus requerimientos y los adminstrativos tener 
     mayor contol y organizacion.  
@@ -104,7 +104,7 @@
         <img alt="javascript" src="https://img.shields.io/badge/Javascript-%23F7DF1E?logo=javascript&logoColor=white">
       </td>
       <td>
-        <img alt="jira" src="https://img.shields.io/badge/Jira-%230052CC?logo=jira&logoColor=white">
+        <img alt="Swagger" src="https://img.shields.io/badge/Jira-%230052CC?logo=Swagger&logoColor=white">
       </td>
     </tr>
     <tr>
