@@ -59,7 +59,7 @@ module.exports = {
 
     await queryInterface.bulkInsert("patientFiles", [
       {
-        id: 1,
+        id: 0,
         description: "Patient file description 1",
         filePath: "/path/to/file1",
         patientId: "76cc92a5-af61-486f-bf87-43e2dbb6a159",

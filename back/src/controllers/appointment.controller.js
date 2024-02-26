@@ -1,6 +1,7 @@
 import HttpResponse from "../helpers/HttpResponse.js";
 import { models } from "../models/index.js";
 import {appointmentServices} from '../services/index.services.js'
+import verifyUser from "../utils/verifyUser.js";
 
 //GET para ADMIN/DOCTOR => query
 async function getAppointments(req, res){
@@ -62,7 +63,7 @@ async function modifyAppointment(req, res){
   const id = req.params.id
 
   try {
-    const update = await appointmentServices.modifyAppointment(id, req.body)
+    const update = await appointmentServices.modifyAppointment({id}, req.body)
 
     if(!update) return HttpResponse.conflict(res)
 
@@ -75,14 +76,66 @@ async function modifyAppointment(req, res){
   }
 }
 
-//BORRAR => param + body
+//MODIFICAR => params + body
+async function modifyMyAppointment(req, res){
+  try {
+    const {patientId, id} = req.params;
+
+    const token = req.headers.authorization;
+    
+    if(!token) return HttpResponse.badRequest(res, {message: "No token"});
+
+    const checkId = await verifyUser(token);
+    
+    if(checkId!=patientId) return HttpResponse.badRequest(res, {message:"Wrong credentials"});
+
+    const update = await appointmentServices.modifyAppointment({patientId, id}, req.body)
+
+    if(!update) return HttpResponse.conflict(res)
+
+    if(update=="bad") return HttpResponse.badRequest(res)
+    
+    return HttpResponse.noContent(res)
+
+  } catch (error) {
+    return HttpResponse.serverError(res)
+  }
+}
+
+//BORRAR => param
 async function deleteAppointment(req, res){
   
   const id = req.params.id
   
   try {
     
-    const remove = await appointmentServices.deleteAppointment(id)
+    const remove = await appointmentServices.deleteAppointment({id})
+
+    if(!remove) return HttpResponse.conflict(res)
+
+    if(remove=="bad") return HttpResponse.badRequest(res)
+    
+    return HttpResponse.noContent(res)
+
+  } catch (error) {
+    return HttpResponse.serverError(res)
+  }
+}
+
+//BORRAR => params
+async function deleteMyAppointment(req, res){
+  try {
+    const {patientId, id} = req.params;
+
+    const token = req.headers.authorization;
+    
+    if(!token) return HttpResponse.badRequest(res, {message: "No token"});
+
+    const checkId = await verifyUser(token);
+
+    if(checkId!=patientId) return HttpResponse.badRequest(res, {message:"Wrong credentials"})
+    
+    const remove = await appointmentServices.deleteAppointment({patientId, id})
 
     if(!remove) return HttpResponse.conflict(res)
 
@@ -101,7 +154,9 @@ const appointmentControllers = {
   getUserAppointments,
   createAppointment,
   modifyAppointment,
-  deleteAppointment
+  modifyMyAppointment,
+  deleteAppointment,
+  deleteMyAppointment,
 }
 
 export default appointmentControllers
