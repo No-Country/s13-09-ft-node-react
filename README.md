@@ -70,7 +70,7 @@
     <h3>📈 Áreas de actividad contempladas</h3>
     <dl>
       <dd>
-        <p>✅Eleccion del lugar del turno, Eleccion del especialista, Cargar y descarga de analisis medicos de </p>
+        <p>✅Eleccion del lugar del turno, Eleccion del especialista, Cargar y descarga de analisis medicos  </p>
       </dd>
     </dl>
   </dd>
@@ -116,7 +116,7 @@
       <img alt="node.js" src="https://img.shields.io/badge/Node.js-%23339933?logo=node.js&logoColor=white">
       </td>
       <td>
-        <img alt="xray" src="https://img.shields.io/badge/XRay-%23D30707">
+        <img alt="Trello" src="https://img.shields.io/badge/Trello-%23D30707">
       </td>
     </tr>
     <tr>
@@ -458,14 +458,14 @@
               </td>
             </tr>
             <tr>
-              <td>Edith Escarlon</td>
+              <td></td>
               <td>
-                <a href="https://github.com/editheugenia">
+                <a href="">
                   <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
                 </a>
               </td>
               <td>
-                <a href="https://www.linkedin.com/in/editheugeniaescarlon">
+                <a href="">
                   <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
                 </a>
               </td>
