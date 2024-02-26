@@ -1,9 +1,17 @@
 import { Router } from "express";
 import {appointmentControllers} from '../controllers/index.controllers.js'
 import { createAppointmentValidation, getAppointmentsQuery } from "../middleware/validations/appointment-validation.mdw.js";
+import authVerificationMiddleware from "../middleware/authVerificationMiddleware.js";
 
 
 const router = Router();
+
+/**
+ * @openapi
+ * tags:
+ *   - name: "Appointment Controller"
+ *     description: "Endpoints related to appointments"
+ */
 
 /** GET Methods */
 /**
@@ -11,8 +19,8 @@ const router = Router();
  * '/appointment/':
  *  get:
  *    tags:
- *      - Appointment Controller
- *    summary: Get admin/doctor appointment (all or by specific criteria)
+ *      - Admin/doctor
+ *    summary: Get appointment (all or by specific criteria)
  *    parameters:
  *      - in: query
  *        name: id
@@ -39,14 +47,14 @@ const router = Router();
  *      500:
  *        description: Server Error
  */
-router.get("/", [getAppointmentsQuery],   appointmentControllers.getAppointments)
+router.get("/", [authVerificationMiddleware(["admin", "doctor"]),getAppointmentsQuery],   appointmentControllers.getAppointments)
 
     /**
      * @openapi
      * '/appointment/my/{patientId}':
      *  get:
      *     tags:
-     *     - Appointment Controller
+     *     - Patient
      *     summary: Get user appointment
      *     parameters:
      *      - name: patientId
@@ -63,7 +71,7 @@ router.get("/", [getAppointmentsQuery],   appointmentControllers.getAppointments
      *      500:
      *        description: Server Error
      */
-router.get("/my/:patientId", appointmentControllers.getUserAppointments)
+router.get("/my/:patientId", [authVerificationMiddleware("patient")], appointmentControllers.getUserAppointments)
 
 /** POST Methods */
     /**
@@ -71,7 +79,7 @@ router.get("/my/:patientId", appointmentControllers.getUserAppointments)
      * '/appointment/':
      *  post:
      *     tags:
-     *     - Appointment Controller
+     *     - All
      *     summary: Create an appointment
      *     requestBody:
      *      required: true
@@ -111,7 +119,7 @@ router.get("/my/:patientId", appointmentControllers.getUserAppointments)
      *      500:
      *        description: Server Error
      */
-router.post("/", [createAppointmentValidation], appointmentControllers.createAppointment)
+router.post("/", [authVerificationMiddleware(["patient", "doctor", "admin"]),createAppointmentValidation], appointmentControllers.createAppointment)
 
 /** PUT Methods */
     /**
@@ -119,7 +127,7 @@ router.post("/", [createAppointmentValidation], appointmentControllers.createApp
      * '/appointment/{id}':
      *  put:
      *     tags:
-     *     - Appointment Controller
+     *     - Admin/doctor
      *     summary: Modify an appointment
      *     parameters:
      *      - name: id
@@ -151,7 +159,50 @@ router.post("/", [createAppointmentValidation], appointmentControllers.createApp
      *      500:
      *        description: Server Error
      */
-router.put("/:id", appointmentControllers.modifyAppointment)
+router.put("/:id", [authVerificationMiddleware(["doctor", "admin"])], appointmentControllers.modifyAppointment)
+
+    /**
+     * @openapi
+     * '/appointment/my/{patientId}/{id}':
+     *  put:
+     *     tags:
+     *     - Patient
+     *     summary: Modify an appointment
+     *     parameters:
+     *      - name: patientId
+     *        in: path
+     *        description: The patient ID
+     *        required: true
+     *      - name: id
+     *        in: path
+     *        description: The appointment ID
+     *        required: true
+     *     requestBody:
+     *      content:
+     *        application/json:
+     *           schema:
+     *            type: object
+     *            properties:
+     *              observations:
+     *                type: json
+     *                default: {"observation":"Something"}
+     *              day:
+     *                type: dateonly
+     *                default: 2024-02-12
+     *              time:
+     *                type: time
+     *                default: 08:00:00
+     *     responses:
+     *      204:
+     *        description: No content
+     *      400:
+     *        description: Bad request
+     *      409:
+     *        description: Conflict
+     *      500:
+     *        description: Server Error
+     */
+router.put("/my/:patientId/:id", [authVerificationMiddleware(["patient"])], appointmentControllers.modifyMyAppointment)
 
 /** DELETE methods */
     /**
@@ -159,7 +210,7 @@ router.put("/:id", appointmentControllers.modifyAppointment)
      * '/appointment/{id}':
      *  delete:
      *     tags:
-     *     - Appointment Controller
+     *     - Admin/doctor
      *     summary: Delete appointment
      *     parameters:
      *      - name: id
@@ -176,7 +227,35 @@ router.put("/:id", appointmentControllers.modifyAppointment)
      *      500:
      *        description: Server Error
      */
-router.delete("/:id", appointmentControllers.deleteAppointment)
+router.delete("/:id", [authVerificationMiddleware(["doctor", "admin"])], appointmentControllers.deleteAppointment)
+
+/**
+     * @openapi
+     * '/appointment/my/{patientId}/{id}':
+     *  delete:
+     *     tags:
+     *     - Patient
+     *     summary: Delete appointment
+     *     parameters:
+     *      - name: patientId
+     *        in: path
+     *        description: The patient ID
+     *        required: true
+     *      - name: id
+     *        in: path
+     *        description: The appointment ID
+     *        required: true
+     *     responses:
+     *      204:
+     *        description: No content
+     *      400:
+     *        description: Bad request
+     *      409:
+     *        description: Conflict
+     *      500:
+     *        description: Server Error
+     */
+router.delete("/my/:patientId/:id", [authVerificationMiddleware(["patient"])], appointmentControllers.deleteMyAppointment)
 
 
 export default router
