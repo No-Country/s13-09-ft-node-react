@@ -461,12 +461,12 @@
               <td></td>
               <td>
                 <a href="">
-                  <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
+                  <img >
                 </a>
               </td>
               <td>
                 <a href="">
-                  <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+                  <img />
                 </a>
               </td>
             </tr>
