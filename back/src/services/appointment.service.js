@@ -72,13 +72,11 @@ async function createAppointment(body){
   }
 }
 
-async function modifyAppointment(id, updates){
+async function modifyAppointment({id}, updates){
   try {
 
     const update = await models.appointment.update({...updates}, {
-      where:{
-        id
-      }
+      where:{id}
     })
 
     return update
@@ -91,13 +89,10 @@ async function modifyAppointment(id, updates){
   }
 }
 
-async function deleteAppointment(id){
+async function deleteAppointment({id}){
   try {
-
     const remove = await models.appointment.destroy({
-      where:{
-        id
-      }
+      where:{id}
     })
     return remove
 
