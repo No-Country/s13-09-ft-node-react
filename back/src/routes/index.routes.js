@@ -5,6 +5,7 @@ import authRoutes from "./auth.route.js";
 import doctorRoutes from "./doctor.route.js";
 import patientFilesRouter from "./patientFile.route.js";
 import patientRoutes from "./patient.route.js";
+import specialtyRoutes from "./specialty.route.js";
 
 const router = Router();
 
@@ -14,6 +15,7 @@ router
   .use("/patients", patientRoutes)
   .use("/patient-files", patientFilesRouter)
   .use("/doctor", doctorRoutes)
+  .use("/specialty", specialtyRoutes)
   .use("/*", (req, res) => {
     return HttpResponse.notFound(res, { url: req.baseUrl });
   });
