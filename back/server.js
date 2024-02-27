@@ -3,10 +3,12 @@ import "dotenv/config";
 import db, { models } from "./src/models/index.js";
 
 import server from "./src/app.js";
+import config from "./config/config.js";
 
 (async () => {
   try {
     await db.sequelize.authenticate();
+    if(process.env.NODE_ENV!='development') await db.sequelize.sync()
     server.listen(`${process.env.PORT}`, () => {
       console.log(`Server listening on ${process.env.PORT}`);
     });
