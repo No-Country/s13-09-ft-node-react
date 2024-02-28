@@ -8,8 +8,7 @@ const server = express();
 
 server.use(express.json());
 server.use(corsMiddleware());
-if(process.env.NODE_ENV!="production") 
-  swaggerDocs(server, process.env.PORT);
+swaggerDocs(server, process.env.PORT);
 server.use(logging);
 server.use(router);
 
