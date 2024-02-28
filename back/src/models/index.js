@@ -17,10 +17,7 @@ const db = {};
 
 
 const sequelize = new Sequelize(
-    config[env].database,
-    config[env].username,
-    config[env].password,
-    {
+    process.env.CONNECTION_STRING, {
         host: config[env].host,
         dialect: config[env].dialect,
         dialectOptions: config[env].dialectOptions,
