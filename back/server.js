@@ -3,7 +3,6 @@ import "dotenv/config";
 import db, { models } from "./src/models/index.js";
 
 import server from "./src/app.js";
-import config from "./config/config.js";
 
 (async () => {
   try {
