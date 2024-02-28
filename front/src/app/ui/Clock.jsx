@@ -29,7 +29,7 @@ const Clock = () => {
                 />
             </div>
             <div>
-                <span className="text-lg font-semibold text-gray-900">
+                <span className="text-lg font-semibold text-gray-900 p-1">
                     {`${hours < 10 ? "0" : ""}${hours}:${minutes < 10 ? "0" : ""
                         }${minutes}:${seconds < 10 ? "0" : ""}${seconds}`}
                 </span>
