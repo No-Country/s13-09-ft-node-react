@@ -1,6 +1,6 @@
 import { Router } from "express";
 import {appointmentControllers} from '../controllers/index.controllers.js'
-import { createAppointmentValidation, getAppointmentsQuery } from "../middleware/validations/appointment-validation.mdw.js";
+import { createAppointmentValidation, getAppointmentsQuery, modifyAppointmentValidation } from "../middleware/validations/appointment-validation.mdw.js";
 import authVerificationMiddleware from "../middleware/authVerificationMiddleware.js";
 
 
@@ -159,7 +159,7 @@ router.post("/", [authVerificationMiddleware(["patient", "doctor", "admin"]),cre
      *      500:
      *        description: Server Error
      */
-router.put("/:id", [authVerificationMiddleware(["doctor", "admin"])], appointmentControllers.modifyAppointment)
+router.put("/:id", [authVerificationMiddleware(["doctor", "admin"]), modifyAppointmentValidation], appointmentControllers.modifyAppointment)
 
     /**
      * @openapi
@@ -202,7 +202,7 @@ router.put("/:id", [authVerificationMiddleware(["doctor", "admin"])], appointmen
      *      500:
      *        description: Server Error
      */
-router.put("/my/:patientId/:id", [authVerificationMiddleware(["patient"])], appointmentControllers.modifyMyAppointment)
+router.put("/my/:patientId/:id", [authVerificationMiddleware(["patient"]), modifyAppointmentValidation], appointmentControllers.modifyMyAppointment) 
 
 /** DELETE methods */
     /**

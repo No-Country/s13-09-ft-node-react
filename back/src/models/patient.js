@@ -16,7 +16,7 @@ export default (sequelize, DataTypes) => {
     }
     Patient.init({
         id: {
-            type: DataTypes.UUIDV4,
+            type: DataTypes.UUID,
             allowNull: false,
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4
