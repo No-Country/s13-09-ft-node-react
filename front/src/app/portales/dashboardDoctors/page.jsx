@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from 'next/link';
 import DoctorSidebar from "./DoctorSidebar";
 import PatientSidebar from "../dashboardPatient/PatientSidebar";
 import SearchBar from "../../ui/SearchBar";
@@ -73,15 +74,12 @@ const DashboardPage = ({ userType }) => {
                     <h2 className="font-medium text-xl text-gray-900">Bienvenido <span className="text-blue-600 font-bold">Dr. Ottoneli!</span></h2>
 
                     <div className="p-4 bg-blue-300 border rounded-lg shadow-md text-white items-center">
-                    <div className="p-4 bg-blue-500 border rounded-lg shadow-md text-white items-center">
-
-                        <h3 className="text-lg font-semibold text-white mb-2">
-                            Tareas asignadas recientes: 3
+                        <h3 className="text-lg font-semibold flex text-white mb-4">
+                            Tareas asignadas recientes: <div className="bg-white text-blue-300 border rounded-lg pr-1 pl-1 ml-2"> 23</div>
                         </h3>
-                        <p className=" text-center">
-                            Ver todo
-                        </p>
-
+                        <Link href="#">
+                            <p className="text-center text-white underline mb-4">Ver todo</p>
+                        </Link>
                         <div className="flex">
                             <table className="w-full text-gray-500">
                                 <tbody>
