@@ -4,7 +4,9 @@ import DoctorSidebar from "./DoctorSidebar";
 import PatientSidebar from "../dashboardPatient/PatientSidebar";
 import SearchBar from "../../ui/SearchBar";
 import Clock from "../../ui/Clock";
-import Notifications from '@/app/ui/svg/Notifications';
+import Notifications from '../../ui/svg/Notifications';
+import { Footer } from "../../components/footer";
+
 
 
 
@@ -29,7 +31,11 @@ const DashboardPage = ({ userType }) => {
                         {/* Aquí está el AnalogClock */}
                         <Clock />
 
-                        <Notifications />
+                        <button>
+                            <Notifications />
+                            
+                        </button>
+
 
                         {/* Div que contiene la imagen del doctor y su nombre */}
                         <div className="flex items-center">
@@ -47,31 +53,67 @@ const DashboardPage = ({ userType }) => {
                     </div>
 
                     {/* Tarjeta de tareas asignadas */}
-                    <div className="p-4 border rounded-lg shadow-md">
-                        <h2 className="text-lg font-semibold text-gray-900 mb-2">
-                            Tareas asignadas recientes:  3
-                        </h2>
-                        <table className="w-full">
-                            <tbody>
-                                <tr>
-                                    <td>Rondas de pacientes</td>
-                                    <td>Revision de resultados de laboratorio</td>
-                                    <td>Procedimientos quirurgicos</td>
-                                </tr>
-                                {/* Agrega más filas según sea necesario */}
-                            </tbody>
-                        </table>
-                        {/* Foto del médico */}
-                        <Image
-                            width={80}
-                            height={80}
-                            src="/assets/doctor.png"
-                            alt="doc img"
-                            className="ml-auto "
-                        />
+                    <h2 className="font-medium text-xl text-gray-900">Bienvenido <span className="text-blue-600 font-bold">Dr. Ottoneli!</span></h2>
+                    <div className="p-4 bg-blue-500 border rounded-lg shadow-md text-white items-center">
+                        <h3 className="text-lg font-semibold text-white mb-2">
+                            Tareas asignadas recientes: 3
+                        </h3>
+                        <p className=" text-center">
+                            Ver todo
+                        </p>
+
+                        <div className="flex">
+                            <table className="w-full text-gray-500">
+                                <tbody>
+                                    <tr className="m-2">
+                                        <td className="flex border bg-white rounded border-gray-300 p-2 items-center">
+                                            <div class="w-10 h-10 flex justify-center items-center rounded-full bg-gradient-to-br from-blue-700 to-blue-500 text-white text-3xl font-bold mr-4">P</div>
+                                            <div>
+                                                <p className="font-semibold text-black"> Rondas de pacientes  </p>
+                                                <p> 25 de enero de 2024 | 9:00 </p>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                    <tr className="m-2">
+                                        <td className="flex border bg-white rounded border-gray-300 p-2 items-center">
+                                            <div class="w-10 h-10 flex justify-center items-center rounded-full bg-gradient-to-br from-blue-700 to-blue-500 text-white text-3xl font-bold mr-4">P</div>
+                                            <div>
+                                                <p className="font-semibold text-black"> Revision de resultados de laboratorio </p>
+                                                <p> 25 de enero de 2024 | 15:00 </p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr className="m-2">
+                                        <td className="flex border bg-white rounded border-gray-300 p-2 items-center">
+                                            <div class="w-10 h-10 flex justify-center items-center rounded-full bg-gradient-to-br from-blue-700 to-blue-500 text-white text-3xl font-bold mr-4">P</div>
+                                            <div>
+                                                <p className="font-semibold text-black"> Procedimientos quirurgicos </p>
+                                                <p> 25 de enero de 2024 | 16:00 </p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+                            {/* Foto del médico */}
+                            <div className="ml-auto">
+                                <Image
+                                    width={400}
+                                    height={400}
+                                    src="/assets/doctor.png"
+                                    alt="doc img"
+                                    className="w-auto h-full p-4"
+                                />
+                            </div>
+                        </div>
                     </div>
+
+
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };
