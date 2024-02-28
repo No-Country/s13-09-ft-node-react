@@ -6,7 +6,7 @@ import { basename, dirname } from "path";
 import { fileURLToPath } from "node:url";
 import path from "path";
 import { readdirSync } from "fs";
-import config from "../../config/config.js";
+import config from "../config/config.js";
 
 const env = process.env.NODE_ENV || 'development';
 

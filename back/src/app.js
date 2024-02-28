@@ -2,7 +2,7 @@ import corsMiddleware from "./middleware/corsOptions.js";
 import express from "express";
 import logging from "./middleware/logguerMiddleware.js";
 import router from "./routes/index.routes.js";
-import swaggerDocs from "../config/swagger.js";
+import swaggerDocs from "./config/swagger.js";
 
 const server = express();
 
