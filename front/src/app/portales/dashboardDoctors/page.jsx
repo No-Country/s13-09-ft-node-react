@@ -33,11 +33,11 @@ const DashboardPage = ({ userType }) => {
 
                         <button>
                             <Notifications />
-
                         </button>
 
 
                         {/* Div que contiene la imagen del doctor y su nombre */}
+
                         <div className="border rounded-[15px] border-gray-300 p-2">
                             <div className="flex items-center">
                                 <Image
@@ -53,11 +53,28 @@ const DashboardPage = ({ userType }) => {
                             </div>
                         </div>
 
+
+                        <div className="flex items-center">
+                            <Image
+                                width={60}
+                                height={60}
+                                src="/assets/doctor.png"
+                                alt="doc img"
+                                className="mr-4 h-8 w-8 rounded-full"
+                            />
+                            <span className="text-lg font-semibold text-gray-900">
+                                Dr. Ottoneli
+                            </span>
+                        </div>
+
                     </div>
 
                     {/* Tarjeta de tareas asignadas */}
                     <h2 className="font-medium text-xl text-gray-900">Bienvenido <span className="text-blue-600 font-bold">Dr. Ottoneli!</span></h2>
+
                     <div className="p-4 bg-blue-300 border rounded-lg shadow-md text-white items-center">
+                    <div className="p-4 bg-blue-500 border rounded-lg shadow-md text-white items-center">
+
                         <h3 className="text-lg font-semibold text-white mb-2">
                             Tareas asignadas recientes: 3
                         </h3>
@@ -70,7 +87,9 @@ const DashboardPage = ({ userType }) => {
                                 <tbody>
                                     <tr className="m-2">
                                         <td className="flex border bg-white rounded border-gray-300 p-2 items-center">
+
                                             <div className="w-10 h-10 flex justify-center items-center rounded-full bg-gradient-to-br from-blue-700 to-blue-500 text-white text-3xl font-bold mr-4">P</div>
+                                            <div class="w-10 h-10 flex justify-center items-center rounded-full bg-gradient-to-br from-blue-700 to-blue-500 text-white text-3xl font-bold mr-4">P</div>
                                             <div>
                                                 <p className="font-semibold text-black"> Rondas de pacientes  </p>
                                                 <p> 25 de enero de 2024 | 9:00 </p>
@@ -81,6 +100,7 @@ const DashboardPage = ({ userType }) => {
                                     <tr className="m-2">
                                         <td className="flex border bg-white rounded border-gray-300 p-2 items-center">
                                             <div className="w-10 h-10 flex justify-center items-center rounded-full bg-gradient-to-br from-blue-700 to-blue-500 text-white text-3xl font-bold mr-4">P</div>
+                                            <div class="w-10 h-10 flex justify-center items-center rounded-full bg-gradient-to-br from-blue-700 to-blue-500 text-white text-3xl font-bold mr-4">P</div>
                                             <div>
                                                 <p className="font-semibold text-black"> Revision de resultados de laboratorio </p>
                                                 <p> 25 de enero de 2024 | 15:00 </p>
@@ -90,6 +110,7 @@ const DashboardPage = ({ userType }) => {
                                     <tr className="m-2">
                                         <td className="flex border bg-white rounded border-gray-300 p-2 items-center">
                                             <div className="w-10 h-10 flex justify-center items-center rounded-full bg-gradient-to-br from-blue-700 to-blue-500 text-white text-3xl font-bold mr-4">P</div>
+                                            <div class="w-10 h-10 flex justify-center items-center rounded-full bg-gradient-to-br from-blue-700 to-blue-500 text-white text-3xl font-bold mr-4">P</div>
                                             <div>
                                                 <p className="font-semibold text-black"> Procedimientos quirurgicos </p>
                                                 <p> 25 de enero de 2024 | 16:00 </p>
