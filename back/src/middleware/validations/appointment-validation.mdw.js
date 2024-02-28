@@ -1,7 +1,7 @@
 import { check, query } from "express-validator";
 import checkValidationResult from "./validator.js";
 
-/**Create appointment */
+/* POST -- Create appointment */
 
 const validatePatientId = check('patientId')
   .trim()
@@ -14,7 +14,7 @@ const validateDoctorId = check('doctorId')
   .isUUID().withMessage('Id incorrecto')
 
 const validateObservations = check('observations')
-  .isObject().withMessage('Observations tiene que ser un JSON');
+  .isObject().withMessage('Observations tiene que ser un JSON'); 
 
 const validateDay = check('day')
   .isISO8601().withMessage('Formato dia inválido. ISO 8601 (YYYY-MM-DD)');
@@ -37,7 +37,7 @@ export const createAppointmentValidation = [
     checkValidationResult
   ]
 
-/* GET appointment queries */
+/* GET -- appointment queries */
 
 function checkAllowedQueryParams(req, res, next) {
   const allowedParams = ['id', 'patientId', 'doctorId'];
@@ -58,5 +58,15 @@ export const getAppointmentsQuery = [
   query('doctorId').optional().isUUID().withMessage("Id incorrecto"),
   checkValidationResult
 ];
+
+
+/* PUT -- Modify appointment */
+
+export const modifyAppointmentValidation = [
+  validateObservations.optional(),
+  validateDay.optional(),
+  validateTime.optional(),
+]
+
 
 
