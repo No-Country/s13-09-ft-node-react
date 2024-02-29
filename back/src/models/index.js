@@ -17,7 +17,13 @@ const db = {};
 
 
 const sequelize = new Sequelize(
-    process.env.CONNECTION_STRING, {
+    env !== 'production' ? config[env].database :
+        process.env.CONNECTION_STRING, 
+    env !== 'production' ? config[env].username :
+        undefined,
+    env !== 'production' ? config[env].password :
+        undefined, 
+    {
         host: config[env].host,
         dialect: config[env].dialect,
         dialectOptions: config[env].dialectOptions,
@@ -25,6 +31,7 @@ const sequelize = new Sequelize(
         native: false
     }
 );
+
 
 const modelsDir = path.resolve(__dirname);
 

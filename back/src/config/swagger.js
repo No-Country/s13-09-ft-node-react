@@ -18,10 +18,10 @@ const options = {
         url: `http://localhost:${process.env.PORT}/`,
         description: "Local server"
       },
-      // {
-      //   url: "<your live url here>",
-      //   description: "Live server"
-      // },
+      {
+        url: "https://s13-09-ft-node-react.vercel.app",
+        description: "Live server"
+      },
     ]
   },
   // looks for configuration in specified directories

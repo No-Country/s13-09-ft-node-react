@@ -4,6 +4,7 @@ import cors from "cors";
 
 const ACCEPTED_ORIGINS = [
   `${process.env.CORS}`,
+  "https://s13-09-ft-node-react.vercel.app",
 ];
 
 const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) =>
