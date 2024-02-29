@@ -5,13 +5,14 @@ import {Mapbox} from "../mapbox"
 import Link from "next/link";
 import Calendar from 'react-calendar';
 import { especialidades,hospitalDirection,practicaMedica } from "../createTurn/turn";
-
 import 'react-calendar/dist/Calendar.css';
 import "./style.css"
-
+import { useRouter } from "next/navigation";
+import {useTurnStore} from "../../utils/store"
 const createTurn = [{ title: "Especialidad y lugar",default:true,id:"especialidad" }, { title: "Profesional y horario",default:false,id:"profesional" }, { title: "Confirmacion",default:false,id:"confirmacion" }]
 
 export function CreateTurnComponent() {
+    const {push} = useRouter()
     const [isOpenEspecialidad, setIsOpenEspecialidad] = useState(true)
     const [isOpenProfesional,setIsOpenProfesional]= useState(false)
     const [isOpenConfirmacion, setIsOpenConfirmacion] = useState(false)
@@ -19,8 +20,8 @@ export function CreateTurnComponent() {
     const [practMedica, setPractMedica] = useState("")
     const [centroMedico, setCentroMedico] = useState("")
     const [isSelectDoctor, setisSelectDoctor] = useState("")
-    const [isSelectHorario,setisSelectHorario]= useState("")
-    
+    const [isSelectHorario, setisSelectHorario] = useState("")
+    const {set} = useTurnStore()
     const [value, onChange] = useState(new Date());
     const handleVolver = (e) => {
         e.preventDefault()
@@ -48,17 +49,17 @@ export function CreateTurnComponent() {
         month: 'long',   
         day: 'numeric'    
     };
+    const diasSemana = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
     const handleConfirmar = (e) => {
         e.preventDefault()
-        setIsOpenProfesional(true);
-        setIsOpenEspecialidad(false);
-        setIsOpenConfirmacion(false)
-        // fetch('https://jsonplaceholder.typicode.com/posts', {
-            
-        // })
-        // .then((response) => response.json())
-        // .then((json) => console.log(json));
+        // setIsOpenProfesional(true);
+        // setIsOpenEspecialidad(false);
+        // setIsOpenConfirmacion(false)
+        set((state) => ({ turn: [{day:[diasSemana[value.getDay()],value.getDate()], especialidad, practicaMedica, centroMedico, isSelectDoctor, isSelectHorario,calle:hospitalDirection.find(item=>item.name == centroMedico).calle }, ...state.turn] }))
+        push("/diary")
     }
+
+
     return <div className="text-black p-4 pt-8 pb-8 h-full flex flex-col justify-between gap-[5rem] max-w-[1080px] m-auto mt-[3.3rem] mb-[3.3rem] max-md:gap-12">
         <div className="flex justify-between gap-2 items-center">
             {
