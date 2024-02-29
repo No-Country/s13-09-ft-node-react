@@ -6,18 +6,26 @@ import { basename, dirname } from "path";
 import { fileURLToPath } from "node:url";
 import path from "path";
 import { readdirSync } from "fs";
+import config from "../config/config.js";
 
-// import path  here
+const env = process.env.NODE_ENV || 'development';
 
 const __filename = fileURLToPath(
     import.meta.url);
 const __dirname = dirname(__filename);
 const db = {};
 
+
 const sequelize = new Sequelize(
-    `${process.env.DB_DIALECT}://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?ssl=true`, {
+    config[env].database,
+    config[env].username,
+    config[env].password,
+    {
+        host: config[env].host,
+        dialect: config[env].dialect,
+        dialectOptions: config[env].dialectOptions,
         logging: false,
-        native: false,
+        native: false
     }
 );
 
