@@ -38,7 +38,6 @@ async function createPatient(data) {
         const checkIdentityCard = await models.patient.findOne({ where: { identity_card: identity_card } });
         if (checkEmail || checkIdentityCard) return 'ALREADY PATIENT';
         const hashedPassword = await encrypt(password);
-        console.log(hashedPassword)
         const newPatient = await models.patient.create({
             name: name,
             surname: surname,
