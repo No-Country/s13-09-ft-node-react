@@ -8,7 +8,7 @@ import swaggerDocs from "./config/swagger.js";
 const server = express();
 
 server.use(express.json());
-server.use(cors);
+server.use(cors());
 swaggerDocs(server, process.env.PORT);
 server.use(logging);
 server.use(router);
