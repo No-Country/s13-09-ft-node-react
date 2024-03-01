@@ -92,11 +92,11 @@ router.get("/", patientControllers.getPatients);
  */
 router.get("/:id", patientControllers.getPatient);
 
-/** PUT Methods */
+/** PATCH Methods */
 /**
  * @openapi
  * '/patient/{id}':
- *  put:
+ *  patch:
  *     tags:
  *     - Patient Controller
  *     summary: Update patient data

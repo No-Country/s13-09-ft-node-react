@@ -78,6 +78,12 @@ export const getDoctorIdService = async(id) => {
 
 export const updateDoctorService = async(id, data) => {
     try {
+        const data_not_allowed = ['email', 'password', 'role'];
+        for (let prop in data_not_allowed) {
+            if (data.hasOwnProperty(data_not_allowed[prop])) {
+                delete data[data_not_allowed[prop]];
+            }
+        }
         const doctor = await models.doctor.update(data, {
             where: { id },
         });
