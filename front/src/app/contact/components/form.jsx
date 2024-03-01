@@ -22,9 +22,7 @@ export function FormComponent() {
         </div>
         <div>
             <label htmlFor="tlf">Número celular</label>
-            {/* <input type="number" name="tlf" id="tlf" placeholder="+593 96 698 8754" className="block w-full border-[1px] border-[#BCC1CD] rounded-lg p-2" /> */}
             <PhoneInput
-       
                 placeholder="Enter phone number"
                 value={value}
                 onChange={(e) => setValue(e)}
