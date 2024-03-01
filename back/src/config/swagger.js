@@ -18,7 +18,7 @@ const options = {
                 description: "Local server"
             },
             {
-                url: "https://s13-09-ft-node-react.vercel.app",
+                url: "https://s13-09-ft-node-react.onrender.com",
                 description: "Live server"
             },
         ]
