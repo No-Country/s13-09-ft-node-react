@@ -38,4 +38,4 @@ const Clock = () => {
     );
 };
 
-export default Clock;
+export { Clock};

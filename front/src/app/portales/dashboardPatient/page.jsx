@@ -1,7 +1,7 @@
 
 import React from "react";
 import Image from "next/image";
-import PatientSidebar from "./PatientSidebar";
+import {PatientSidebar} from "./PatientSidebar";
 import SearchBar from "../../ui/SearchBar";
 import Clock from "../../ui/Clock";
 import Mas from "../../ui/svg/Mas";

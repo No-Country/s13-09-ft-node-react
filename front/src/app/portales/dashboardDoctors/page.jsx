@@ -3,17 +3,12 @@ import Image from "next/image";
 import Link from 'next/link';
 import {DoctorSidebar} from "./DoctorSidebar";
 import {PatientSidebar} from "../dashboardPatient/PatientSidebar";
-import SearchBar from "../../ui/SearchBar";
-import Clock from "../../ui/Clock";
-import Notifications from '../../ui/svg/Notifications';
+import {SearchBar} from "../../ui/SearchBar";
+import {Clock} from "../../ui/Clock";
+import {Notifications} from '../../ui/svg/Notifications';
 import { Footer } from "../../components/footer";
 
-
-
-
-
-
-  const DashboardPage = ({ userType }) => {
+const DashboardPage = ({ userType }) => {
     return (
         <div className="flex h-screen flex-col">
             {/* Contenido principal */}
@@ -125,4 +120,4 @@ import { Footer } from "../../components/footer";
     );
 };
 
-export default DashboardPage
+export default  DashboardPage
