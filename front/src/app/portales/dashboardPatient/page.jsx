@@ -10,7 +10,7 @@ import {Cruz} from "../../ui/svg/Cruz";
 import {Check} from "../../ui/svg/Check";
 import { Footer } from "../../components/footer";
 
-const PatientPage = ({ userType }) => {
+const PatientPage = () => {
     return (
         <div className="flex h-screen flex-col">
             {/* Contenido principal */}
