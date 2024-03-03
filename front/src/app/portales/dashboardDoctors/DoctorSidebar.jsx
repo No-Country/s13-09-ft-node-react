@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const DoctorSidebar = () => {
+export const DoctorSidebar = () => {
     return (
         <div className="hidden lg:flex flex-col h-screen bg-blue-200 lg:w-1/4" style={{ backgroundColor: '#CFE7FD' }}>
             <div>
@@ -102,4 +102,3 @@ const DoctorSidebar = () => {
     );
 };
 
-export default DoctorSidebar;

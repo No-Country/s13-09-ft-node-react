@@ -1,4 +1,4 @@
-import {Poppins} from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import {FormLogin} from './components/form';
 import Link from 'next/link';
 const poppins = Poppins({subsets: ['latin'], weight: '400'});
@@ -8,7 +8,8 @@ export const metadata = {
   description: 'Login',
 };
 
-export default function Login() {
+export default   function Login() {
+
   return (
     <div className={`${poppins.className} flex h-[100vh]`}>
       <div className='max-md:hidden'>

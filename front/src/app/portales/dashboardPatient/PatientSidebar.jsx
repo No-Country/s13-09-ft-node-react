@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const PatientSidebar = ({ paciente }) => {
+export const PatientSidebar = ({ paciente }) => {
     return (
         <div className="hidden lg:flex flex-col h-screen bg-blue-200 lg:w-1/4" style={{ backgroundColor: '#CFE7FD' }}>
             <div className="p-4">
@@ -74,4 +74,3 @@ const PatientSidebar = ({ paciente }) => {
     );
 };
 
-export default PatientSidebar;
