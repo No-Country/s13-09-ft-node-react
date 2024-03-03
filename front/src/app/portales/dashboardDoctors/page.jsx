@@ -25,7 +25,7 @@ export default function DashboardPage ({ userType }) {
                         <SearchBar />
 
                         {/* Aquí está el AnalogClock */}
-                        <Clock />
+                        {/* <Clock /> */}
 
                         <button>
                             <Notifications />
