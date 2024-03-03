@@ -1,11 +1,5 @@
 'use client';
 import { useState } from 'react';
-<<<<<<< HEAD
-export  function FormLogin() {
-  const [isOpenPassword, setisOpenPassword] = useState(false);
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-=======
 import axios from 'axios';
 import { ToastContainer } from 'react-toastify';
 import { displaySuccessMessage, displayFailedMessage } from '../../components/Toastify/Toastify';
@@ -35,18 +29,9 @@ export function FormLogin() {
 
     }
   };
->>>>>>> 2008547154b02be04bbd952efc7be9d4769f6539
 
-  const handleSubmit = async(e) => {
-    e.preventDefault()
-
-  }
   return (
-<<<<<<< HEAD
     <form onSubmit={handleSubmit} className='flex flex-col gap-4 mt-8 mb-8'>
-=======
-    <form action='' className='flex flex-col gap-4 mt-8 mb-8' onSubmit={handleSubmit}>
->>>>>>> 2008547154b02be04bbd952efc7be9d4769f6539
       <input
         type='email'
         name='email'
@@ -54,7 +39,6 @@ export function FormLogin() {
         className='w-full h-12 px-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500'
         placeholder='HealthMate@gmail.com'
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
       />
       <div className='flex items-center bg-white border border-gray-300 rounded-md'>
         <input
@@ -64,7 +48,6 @@ export function FormLogin() {
           className='w-full h-12 px-4 appearance-none  focus:outline-none border-none'
           placeholder='******'
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
         />
 
         {isOpenPassword ? (
@@ -102,11 +85,8 @@ export function FormLogin() {
         className={`${email && password  ? "bg-gradient-to-r from-[#0234A1] to-[#415DF9]":"bg-gray-500 cursor-not-allowed"} text-xl font-bold  text-white h-[50px] hover:opacity-90`}>
         Ingresar
       </button>
-<<<<<<< HEAD
 
-=======
       <ToastContainer style={{ marginTop: "20px" }} />
->>>>>>> 2008547154b02be04bbd952efc7be9d4769f6539
     </form>
   );
 }
