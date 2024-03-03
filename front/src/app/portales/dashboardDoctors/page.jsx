@@ -8,7 +8,7 @@ import {Clock} from "../../ui/Clock";
 import {Notifications} from '../../ui/svg/Notifications';
 import { Footer } from "../../components/footer";
 
-export default function DashboardPage ({ userType }) {
+export default function DashboardPage () {
     return (
         <div className="flex h-screen flex-col">
             {/* Contenido principal */}
@@ -25,7 +25,7 @@ export default function DashboardPage ({ userType }) {
                         <SearchBar />
 
                         {/* Aquí está el AnalogClock */}
-                        {/* <Clock /> */}
+                        <Clock />
 
                         <button>
                             <Notifications />
