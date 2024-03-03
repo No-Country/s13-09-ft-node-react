@@ -17,4 +17,4 @@ const Mas = () => {
     );
 };
 
-export default Mas;
+export {Mas};

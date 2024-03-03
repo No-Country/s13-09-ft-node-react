@@ -2,12 +2,12 @@
 import React from "react";
 import Image from "next/image";
 import {PatientSidebar} from "./PatientSidebar";
-import SearchBar from "../../ui/SearchBar";
-import Clock from "../../ui/Clock";
-import Mas from "../../ui/svg/Mas";
-import Exclamacion from "../../ui/svg/Exclamacion";
-import Cruz from "../../ui/svg/Cruz";
-import Check from "../../ui/svg/Check";
+import {SearchBar} from "../../ui/SearchBar";
+import {Clock} from "../../ui/Clock";
+import {Mas} from "../../ui/svg/Mas";
+import {Exclamacion} from "../../ui/svg/Exclamacion";
+import {Cruz} from "../../ui/svg/Cruz";
+import {Check} from "../../ui/svg/Check";
 import { Footer } from "../../components/footer";
 
 const PatientPage = ({ userType }) => {

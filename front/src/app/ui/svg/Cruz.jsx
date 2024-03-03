@@ -19,4 +19,4 @@ const Cruz = () => {
     );
 };
 
-export default Cruz;
+export { Cruz};

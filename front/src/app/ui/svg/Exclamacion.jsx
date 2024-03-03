@@ -37,4 +37,4 @@ const Exclamacion = () => {
     );
 };
 
-export default Exclamacion;
+export { Exclamacion};

@@ -72,4 +72,4 @@ const Options = () => {
     );
 };
 
-export default Options;
+export {Options};

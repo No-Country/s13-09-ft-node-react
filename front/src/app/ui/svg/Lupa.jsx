@@ -26,4 +26,4 @@ const Lupa = () => {
     );
 };
 
-export default Lupa;
+export  {Lupa};
