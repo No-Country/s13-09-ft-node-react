@@ -8,7 +8,7 @@ import {Clock} from "../../ui/Clock";
 import {Notifications} from '../../ui/svg/Notifications';
 import { Footer } from "../../components/footer";
 
-const DashboardPage = ({ userType }) => {
+export default function DashboardPage ({ userType }) {
     return (
         <div className="flex h-screen flex-col">
             {/* Contenido principal */}
@@ -120,4 +120,3 @@ const DashboardPage = ({ userType }) => {
     );
 };
 
-export default  DashboardPage

@@ -38,4 +38,4 @@ const Clock = () => {
     );
 };
 
-export { Clock};
+export {Clock};

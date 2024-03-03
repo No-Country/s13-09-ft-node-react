@@ -1,6 +1,6 @@
 import React from "react";
-import Lupa from "./svg/Lupa";
-import Options from "./svg/Options";
+import {Lupa} from "./svg/Lupa";
+import {Options} from "./svg/Options";
 
 const SearchBar = () => {
     return (

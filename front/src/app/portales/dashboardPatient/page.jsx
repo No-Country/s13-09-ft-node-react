@@ -11,9 +11,6 @@ import {Check} from "../../ui/svg/Check";
 import { Footer } from "../../components/footer";
 
 const PatientPage = ({ userType }) => {
-
-
-
     return (
         <div className="flex h-screen flex-col">
             {/* Contenido principal */}
