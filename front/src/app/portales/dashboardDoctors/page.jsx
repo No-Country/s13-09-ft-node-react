@@ -13,7 +13,7 @@ import { Footer } from "../../components/footer";
 
 
 
-export const DashboardPage = ({ userType }) => {
+  const DashboardPage = ({ userType }) => {
     return (
         <div className="flex h-screen flex-col">
             {/* Contenido principal */}
@@ -125,3 +125,4 @@ export const DashboardPage = ({ userType }) => {
     );
 };
 
+export default DashboardPage
