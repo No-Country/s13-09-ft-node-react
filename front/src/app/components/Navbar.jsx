@@ -15,7 +15,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-white">
+        <nav className="bg-white fixed right-0 left-0 top-0 border-b-[1px] border-b-[#ddd] z-10">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
@@ -50,9 +50,9 @@ const Navbar = () => {
                                     Contacto
                                 </div>
                             </Link>
-                            <Link href="/bank-book" onClick={closeNavbar}>
+                            <Link href="/doctors" onClick={closeNavbar}>
                                 <div className="text-slate-600 hover:text-slate-50 px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-600">
-                                    Cartilla
+                                    Profesionales
                                 </div>
                             </Link>
                             <Link href="/login" onClick={closeNavbar}>

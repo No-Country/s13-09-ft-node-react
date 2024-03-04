@@ -1,4 +1,5 @@
 import { Footer } from "../components/footer"
+import Navbar from "../components/Navbar"
 const listDocts = [
     { name: "Dra. Amanda Pozo", especialidad: "Cardiología", img: "/docPozo.svg" },
     { name: "Dr. Lucas Peña", especialidad: "Nefrología", img: "/docPeña.svg" },
@@ -9,6 +10,7 @@ const listDocts = [
 ]
 export default function  Doctors(){
     return <>
+        <Navbar/>
     <div className="text-black max-w-[1295px] m-auto mt-8 bg-[#fff] max-xl:w-[90%]">
         <div className="relative">
             <img src="/doctors-img.svg" alt="services" />
