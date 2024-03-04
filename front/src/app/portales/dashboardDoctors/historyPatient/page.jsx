@@ -5,6 +5,7 @@ import { Clock } from "../../../ui/Clock"
 import { Notifications } from "../../../ui/svg/Notifications"
 import { Footer } from "../../../components/footer"
 import Image from "next/image"
+import { useState } from "react"
 const listDocts = [
     { name: "Dra. Amanda Pozo", especialidad: "Cardiología", img: "/docPozo.svg" },
     { name: "Dr. Lucas Peña", especialidad: "Nefrología", img: "/docPeña.svg" },
@@ -13,13 +14,21 @@ const listDocts = [
 
 ]
 export default function HistoryPatient() {
+    const [isOpenReceta,setIsOpenReceta] = useState(false)
+    const [allReceta,setAllReceta] = useState(["El paciente presenta síntomas y hallazgos consistentes con un cuadro clínico sugestivo de diabetes, como se detalla en la sección de Síntomas Actuales y los resultados de los análisis de sangre, que indican niveles elevados de glucosa u otros parámetros relacionados con la diabete"])
+
     const handleClick = (e) => {
         e.preventDefault()
-        const link = document.createElement('a');
+        const link = document.createElement("a");
         link.href = "/cardiogramaExample.pdf";
-        link.download = '/cardiogramaExample.pdf';
+        link.download = "/cardiogramaExample.pdf";
         document.body.appendChild(link);
         link.click();
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        setAllReceta([e.target.description.value, ...allReceta])
+        setIsOpenReceta(false)
     }
     return (
         <div className="flex h-screen flex-col">
@@ -54,7 +63,7 @@ export default function HistoryPatient() {
                     </div>
                     <div className="text-black mt-8">
                         <div className="flex justify-between gap-4 max-md:flex-col">
-                            <div className="p-4 border-[1px] border-[#E8E7E7] shadow-[0px_1px_50px_0px_#00000014] rounded-lg">
+                            <div className="p-4 border-[1px] border-[#E8E7E7] shadow-[0px_1px_50px_0px_#00000014] rounded-lg flex flex-col justify-around">
                                 <div className="flex justify-between gap-4 items-center mb-4">
                                     <h2 className="font-semibold text-2xl ">Tomas Juarez</h2>
                                     <p>Email: tomas.juarez@email.com</p>
@@ -68,12 +77,15 @@ export default function HistoryPatient() {
                                     <p className="font-semibold">factor sanguíneo:<span className="font-normal"> A positivo (A+)</span></p>
                                 </div>
                             </div>
-                            <div className="flex flex-col justify-between w-full h-auto bg-[#FFF2E0] rounded-lg p-4">    
+                            <div className="flex flex-col justify-between gap-4 w-full h-auto bg-[#FFF2E0] rounded-lg p-4">    
                                 <span className="w-max text-[#DB8E21] bg-white p-2">NOTAS</span>
-                                <div className="text-[0.9rem]">
-                                    <p>El paciente presenta síntomas y hallazgos consistentes con un cuadro clínico sugestivo de diabetes, como se detalla en la sección de "Síntomas Actuales" y los resultados de los análisis de sangre, que indican niveles elevados de glucosa u otros parámetros relacionados con la diabetes</p>
+                                <div className="text-[0.9rem] flex flex-col gap-4 overflow-y-auto h-[180px]">
+                                    {
+                                        allReceta.map((item, position) =>
+                                            <p key={position} className="bg-[#c2ff0054] p-2">{ item}</p>)
+                                    }
                                 </div>
-                                <button className="w-max flex gap-4 items-center  rounded-lg bg-[#FFFFFF] border-[1px] border-dashed border-[#FFA000] p-2 hover:opacity-80"> <span className="text-[#FFA000] font-bold text-2xl">+</span>Añadir receta medica <span className="text-[#ddd]  text-2xl">{">"}</span> </button>
+                                <button onClick={()=>setIsOpenReceta(true)} className="w-max flex gap-4 items-center  rounded-lg bg-[#FFFFFF] border-[1px] border-dashed border-[#FFA000] p-2 hover:opacity-80"> <span className="text-[#FFA000] font-bold text-2xl">+</span>Añadir receta medica <span className="text-[#ddd]  text-2xl">{">"}</span> </button>
                             </div>
                         </div>
                         <div className="mt-8 mb-8">
@@ -108,6 +120,24 @@ export default function HistoryPatient() {
                 </div>
             </div>
             <Footer />
+            {
+                isOpenReceta ? 
+                    <div className="fixed inset-0">
+                        <form onSubmit={handleSubmit} className="bg-[#a5d6ff] m-auto mt-8 w-[90%] h-[90%] p-4 rounded-lg flex flex-col justify-between gap-4 max-w-[1000px]">
+                            <div className="flex justify-between items-center">
+                                <h2 className="text-2xl font-bold text-black">Receta médica</h2>
+                                <button type="button" onClick={()=>setIsOpenReceta(false)}>
+                                    <img src="/close.svg" alt="close" width={40}/>
+                                </button>
+                            </div>
+                            <textarea name="description" id="description"  cols="30" rows="10" className="h-full text-black p-4 rounded-md" ></textarea>
+                            <div className="">
+                                <button type="submit" className="p-4 text-center w-full bg-[#171717] font-semibold rounded-lg hover:opacity-80">Confirmar</button>
+                            </div>
+                        </form>
+                    </div>
+                : null
+            }
         </div>        
     )
 }
