@@ -96,9 +96,9 @@ const Navbar = () => {
                         </div>
                     </Link>
                     <Link href="/doctors" onClick={closeNavbar}>
-                                <div className="text-slate-600 hover:text-slate-50 px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-600">
-                                    Profesionales
-                                </div>
+                        <div className="text-slate-600 hover:text-slate-50 block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700">
+                        Profesionales
+                        </div>
                     </Link>
                     <Link href="/login" onClick={closeNavbar}>
                         <div className="text-slate-600 hover:text-slate-50 block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700">
