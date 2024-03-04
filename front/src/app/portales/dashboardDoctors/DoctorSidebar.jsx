@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export const DoctorSidebar = () => {
     return (
-        <div className="hidden lg:flex flex-col h-screen bg-blue-200 lg:w-1/4" style={{ backgroundColor: '#CFE7FD' }}>
+        <div className="h-full hidden lg:flex flex-col  bg-blue-200 lg:w-1/4" style={{ backgroundColor: '#CFE7FD' }}>
             <div>
                 {/* Logo de la clínica */}
                 <div className="flex items-center mb-4">

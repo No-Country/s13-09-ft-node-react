@@ -6,13 +6,14 @@ import Image from 'next/image';
 const Clock = () => {
     const [time, setTime] = useState(new Date());
 
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            setTime(new Date());
-        }, 1000);
+    const updateClock = () => {
+        setTime(new Date());
+        requestAnimationFrame(updateClock);
+    };
 
-        return () => clearInterval(intervalId);
-    }, []);
+    useEffect(() => {
+        updateClock();
+    }, []); // Solo ejecutar una vez al montar el componente
 
     const hours = time.getHours();
     const minutes = time.getMinutes();
@@ -38,4 +39,4 @@ const Clock = () => {
     );
 };
 
-export {Clock};
+export { Clock };

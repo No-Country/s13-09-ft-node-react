@@ -16,7 +16,7 @@ export default function Diary() {
                 {
                     turn.length ? 
                     turn.map((item) => (
-                            <div className="flex justify-between items-center w-full border-[1px] border-[#0000001F] rounded-lg text-center max-md:flex-col gap-4 max-md:p-4" key={item.especialidad}>
+                            <div className="w-auto m-auto flex justify-between items-center  border-[1px] border-[#0000001F] rounded-lg text-center max-md:flex-col gap-4 max-md:p-4" key={item.especialidad}>
                                 <div className="w-[95px] rounded-lg bg-[#02599E] text-white font-semibold p-4 ">
                                 <p>{item.day[0].toLocaleUpperCase()}<br />{item.day[1] }</p>
                                 </div>
