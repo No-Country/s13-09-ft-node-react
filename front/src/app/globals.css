@@ -20,3 +20,18 @@ body {
   color: rgb(var(--foreground-rgb));
   background-color: white;
 }
+
+
+/* Para navegadores webkit */
+::-webkit-scrollbar {
+  width: 9px; /* Ancho del scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #a0c0d5; /* Color del fondo del thumb (la parte que puedes arrastrar) */
+  border-radius: 8px; /* Bordes redondeados del thumb */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Color del fondo del track (la parte donde el thumb se desplaza) */
+}

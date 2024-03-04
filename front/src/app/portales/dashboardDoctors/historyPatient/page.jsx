@@ -6,6 +6,7 @@ import { Notifications } from "../../../ui/svg/Notifications"
 import { Footer } from "../../../components/footer"
 import Image from "next/image"
 import { useState } from "react"
+import {Loader} from "../../../components/loading"
 const listDocts = [
     { name: "Dra. Amanda Pozo", especialidad: "Cardiología", img: "/docPozo.svg" },
     { name: "Dr. Lucas Peña", especialidad: "Nefrología", img: "/docPeña.svg" },
