@@ -7,7 +7,7 @@ export default function Diary() {
     const { turn, set } = useTurnStore()
     return <>
         <Navbar></Navbar>
-        <div className="text-black max-w-[1295px] m-auto mt-8 bg-[#fff] max-xl:w-[95%] min-h-[52vh]">
+        <div className="text-black max-w-[1295px] p-2 m-auto mt-24 bg-[#fff] max-xl:w-[95%] min-h-[52vh] ">
             <div className="flex gap-8">
               <button className="text-[#015190] font-medium border-b-[1px] border-b-[#015190]">Próximos</button>
               <button>Previos</button>

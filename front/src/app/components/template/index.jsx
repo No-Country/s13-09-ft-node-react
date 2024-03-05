@@ -4,16 +4,25 @@ import Link from "next/link"
 import { Inter } from "next/font/google";
 const inter = Inter({subsets: ['latin'], weight: '500'});
 
-export function TemplateCartDashBoard({ imgSvg, title }) {
-    return <Link href={"/createTurn"} className="text-black flex items-center justify-between p-4 border-[1px] border-[#ddd] rounded-lg w-[400px] h-[112px] max-md:w-[350px] max-md:h-[90px] shadow-[0_0_5px_1px_#ddd] hover:scale-105">
-        <div className="flex gap-4 items-center">
-            <img src={imgSvg} alt={title} />
-            <h2 className="text-xl text-[#111928]">{title}</h2>
-        </div>
-        <div>
-            <img src="/arrow-right.svg" alt="arrowRight" />
-        </div>
-    </Link>
+export function TemplateCartDashBoard({ imgSvg, title, onClick }) {
+  return  onClick ? <button onClick={handleClick} href={"/createTurn"} className="text-black flex items-center justify-between p-4 border-[1px] border-[#ddd] rounded-lg w-[400px] h-[112px] max-md:w-[350px] max-md:h-[90px] shadow-[0_0_5px_1px_#ddd] hover:scale-105">
+  <div className="flex gap-4 items-center">
+      <img src={imgSvg} alt={title} />
+      <h2 className="text-xl text-[#111928]">{title}</h2>
+  </div>
+  <div>
+      <img src="/arrow-right.svg" alt="arrowRight" />
+  </div>
+</button> : <Link href={"/createTurn"} className="text-black flex items-center justify-between p-4 border-[1px] border-[#ddd] rounded-lg w-[400px] h-[112px] max-md:w-[350px] max-md:h-[90px] shadow-[0_0_5px_1px_#ddd] hover:scale-105">
+      <div className="flex gap-4 items-center">
+          <img src={imgSvg} alt={title} />
+          <h2 className="text-xl text-[#111928]">{title}</h2>
+      </div>
+      <div>
+          <img src="/arrow-right.svg" alt="arrowRight" />
+      </div>
+  </Link>
+    
 }
 
 export function TemplateCartService({imgSvg, title,description}) {
@@ -81,4 +90,12 @@ export function TemplateInputCreateTurn({ type ,dataArray,modData,dataDefault}) 
           </svg>
         </div>
       </div>)
+}
+function handleClick(e) {
+  e.preventDefault()
+  const link = document.createElement("a");
+  link.href = "/cartillaExample.pdf";
+  link.download = "/cartillaExample.pdf";
+  document.body.appendChild(link);
+  link.click();
 }

@@ -16,7 +16,7 @@ const Navbar = () => {
 
     return (
         <nav className="bg-white fixed right-0 left-0 top-0 border-b-[1px] border-b-[#ddd] z-10">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto  px-4 sm:px-6 lg:px-8 max-lg:ml-0 pl-0">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
                         <div className="flex-shrink-0">
@@ -80,7 +80,7 @@ const Navbar = () => {
             </div>
             <div className={`md:hidden ${isClick ? 'block' : 'hidden'}`}>
                 <div className="px-2 pt-2 pb-3 space-y-1">
-                    <Link href="/about" onClick={closeNavbar}>
+                    <Link href="/noostros" onClick={closeNavbar}>
                         <div className="text-slate-600 hover:text-slate-50 block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700">
                             Nosotros
                         </div>

@@ -17,7 +17,7 @@ export function Footer() {
             <Link href={"/"} className="opacity-70  hover:opacity-90">
               Preguntas frecuentes
             </Link>
-            <Link href={"/"} className="opacity-70  hover:opacity-90">
+            <Link href={"/contact"} className="opacity-70  hover:opacity-90">
               Contacto
             </Link>
           </div>
@@ -26,7 +26,7 @@ export function Footer() {
           {" "}
           <h2 className="font-bold">Servicios</h2>
           <div className="mt-4 flex flex-col gap-2">
-            <Link href={"/"} className="opacity-70  hover:opacity-90">
+            <Link href={"/nosotros"} className="opacity-70  hover:opacity-90">
               Sobre nosotros
             </Link>
             <Link href={"/"} className="opacity-70  hover:opacity-90">
@@ -37,10 +37,10 @@ export function Footer() {
         <div className="max-md:mt-4">
           <h2 className="font-bold">Social</h2>
           <div className="mt-4 flex flex-col gap-2">
-            <Link href={"/"} className="opacity-70  hover:opacity-90">
+            <Link href={"https://github.com"} className="opacity-70  hover:opacity-90">
               Github
             </Link>
-            <Link href={"/"} className="opacity-70  hover:opacity-90">
+            <Link href={"https://www.linkedin.com"} className="opacity-70  hover:opacity-90">
               Linkedin
             </Link>
           </div>
@@ -49,14 +49,14 @@ export function Footer() {
           <h2 className="font-bold">¿Necesitás ayuda?</h2>
           <div className="mt-2 flex flex-col gap-2">
             <Link
-              href={"/login"}
+              href={"https://www.whatsapp.com/"}
               className="flex items-center  gap-2 rounded-lg border-[1px]  border-[#576eef] bg-gradient-to-t from-[#1745E8] to-[#06207C] p-6  pb-[0.3rem] pt-[0.3rem] hover:opacity-90"
             >
               <img src="/whatsaap.svg" alt="whatsaap" />
               Whatsaap
             </Link>
             <Link
-              href={"/login"}
+              href={"/contact"}
               className="flex items-center  gap-2 rounded-lg border-[1px]  border-[#576eef] bg-gradient-to-t from-[#1745E8] to-[#06207C] p-6 pb-[0.3rem] pt-[0.3rem] hover:opacity-90"
             >
               <img src="/help.svg" alt="help" />

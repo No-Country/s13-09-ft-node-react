@@ -11,7 +11,7 @@ const listDocts = [
 export default function  Doctors(){
     return <>
         <Navbar/>
-    <div className="text-black max-w-[1295px] m-auto mt-8 bg-[#fff] max-xl:w-[90%]">
+    <div className="text-black max-w-[1295px] m-auto mt-16 bg-[#fff] max-xl:w-[90%]">
         <div className="relative">
             <img src="/doctors-img.svg" alt="services" />
             <h2 className="text-[#1745E8] absolute left-[5%] top-[40%] text-4xl font-semibold leading-normal max-md:top-[20%] max-md:text-2xl">Conoce nuestros <br className="mt-4"/> Doctores</h2>

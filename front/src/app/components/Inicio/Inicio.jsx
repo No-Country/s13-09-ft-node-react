@@ -51,17 +51,17 @@ const Inicio = () => {
   ]);
 
   return (
-    <div>
-   <div className="relative mx-auto my-4">
+    <div className="mt-28">
+   <div className="relative mx-auto my-4 ">
       <Image
         src="/banner-home.jpg"
         width={1366}
         height={210}
         alt="banner-home"
-        className="w-screen hidden md:block"
+        className="w-screen hidden lg:block"
       />
-      <div className="md:absolute inset-0 mx-4 md:mx-24 flex items-center text-black text-center">
-        <div className="w-full md:w-4/12 text-center md:text-start">
+      <div className="lg:absolute inset-0 mx-4 lg:mx-24 flex items-center text-black text-center">
+        <div className="w-full lg:w-4/12 text-center lg:text-start">
           <h2 className="my-4 text-3xl font-semibold">
             Tenemos una amplia infraestructura de servicios médicos internos.
           </h2>
@@ -72,7 +72,7 @@ const Inicio = () => {
         </div>
       </div>
     </div>
-      <h4 className="mx-24 my-10 text-2xl font-semibold text-blue-600 underline text-center md:text-start">
+      <h4 className="mx-24 my-10 text-2xl mt-20 font-semibold text-blue-600 underline text-center lg:text-start">
         Centros Médicos de Excelencia
       </h4>
       <div className="mx-8 my-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-black">

@@ -52,15 +52,12 @@ export function CreateTurnComponent() {
     const diasSemana = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
     const handleConfirmar = (e) => {
         e.preventDefault()
-        // setIsOpenProfesional(true);
-        // setIsOpenEspecialidad(false);
-        // setIsOpenConfirmacion(false)
         set((state) => ({ turn: [{day:[diasSemana[value.getDay()],value.getDate()], especialidad, practicaMedica, centroMedico, isSelectDoctor, isSelectHorario,calle:hospitalDirection.find(item=>item.name == centroMedico).calle }, ...state.turn] }))
         push("/diary")
     }
 
 
-    return <div className="text-black p-4 pt-8 pb-8 h-full flex flex-col justify-between gap-[5rem] max-w-[1080px] m-auto mt-[3.3rem] mb-[3.3rem] max-md:gap-12">
+    return <div className="text-black p-4 pt-8 pb-8 h-full flex flex-col justify-between gap-[5rem] max-w-[1080px] m-auto mt-14 mb-4 max-md:gap-12">
         <div className="flex justify-between gap-2 items-center">
             {
                 isOpenConfirmacion || isOpenProfesional ?  <button onClick={handleVolver} className="flex gap-2 items-center hover:opacity-90 text-[#111827]"><img src="/arrow-left.svg" alt="arrow-left" />Volver</button> : <Link href={"/dashboard"} className="flex gap-2 items-center hover:opacity-90 text-[#111827]"><img src="/arrow-left.svg" alt="arrow-left" />Volver</Link>
@@ -74,14 +71,14 @@ export function CreateTurnComponent() {
             </div>
        </div>
         { isOpenEspecialidad ? <>
-            <div className="flex flex-col gap-4 justify-center items-center ">
+            <div className="flex flex-col gap-4 jus tify-center items-center ">
                 <TemplateInputCreateTurn type="Especialidad" dataArray={especialidades} dataDefault={especialidad } modData={(dataMod)=>setEspecialidad(dataMod)}/>
                 <TemplateInputCreateTurn type="Práctica Médica" dataArray={practicaMedica} dataDefault={practMedica } modData={(dataMod)=>setPractMedica(dataMod)}/>
                 <TemplateInputCreateTurn type="Centro Médico" dataArray={hospitalDirection} dataDefault={centroMedico } modData={(dataMod)=>setCentroMedico(dataMod)}/>
             </div>
-            <div className="flex gap-4 flex-wrap justify-between items-center max-lg:justify-center">
-                <Link href={"/dashboard"} className="flex justify-center items-center w-[510px] h-[60px] max-md:w-[90%] max-md:h-[40px] text-[#015190] border-[1px] border-[#015190] hover:opacity-90 rounded-lg ">Cancelar</Link>
-                <button disabled={especialidad && practMedica && centroMedico ? false:true } className={`${especialidad && practMedica && centroMedico ? "bg-[#015190]":"bg-gray-500 cursor-not-allowed"} w-[510px] h-[60px] max-md:w-[90%] max-md:h-[40px] text-white  hover:opacity-90 rounded-lg`} onClick={()=>{setIsOpenProfesional(true),setIsOpenEspecialidad(false),setIsOpenConfirmacion(false)}}>Continuar</button>
+            <div className="flex gap-4 flex-wrap  items-center justify-center">
+                <Link href={"/dashboard"} className="flex justify-center items-center w-[510px] h-[60px] max-lg:w-[90%] max-md:h-[40px] text-[#015190] border-[1px] border-[#015190] hover:opacity-90 rounded-lg ">Cancelar</Link>
+                <button disabled={especialidad && practMedica && centroMedico ? false:true } className={`${especialidad && practMedica && centroMedico ? "bg-[#015190]":"bg-gray-500 cursor-not-allowed"} w-[510px] h-[60px] max-lg:w-[90%] max-md:h-[40px] text-white  hover:opacity-90 rounded-lg`} onClick={()=>{setIsOpenProfesional(true),setIsOpenEspecialidad(false),setIsOpenConfirmacion(false)}}>Continuar</button>
             </div></> : null}
         {isOpenProfesional ? <>
             <div className="flex  gap-4 max-md:gap-8 justify-between  max-md:justify-center max-md:items-center flex-wrap">

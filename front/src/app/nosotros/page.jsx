@@ -7,7 +7,7 @@ export default function SobreNosotros() {
     <>
       <Navbar />
 
-      <div className="font-Inter text-black flex flex-col items-center">
+      <div className="font-Inter text-black flex flex-col items-center mt-16">
         <div className="max-w-7xl flex h-[250px] w-full bg-[url('/nosotros.png')] bg-cover bg-center">
           <div className="flex flex-col gap-4 pl-4 pt-16 font-Inter text-4xl font-bold text-primary">
             <h2>Transformá tu salud.</h2>

@@ -6,7 +6,7 @@ import { FormComponent } from "./components/form"
 export default function Contact() {
     return <>
         <Navbar></Navbar>
-        <div className="text-black max-w-[1295px] m-auto mt-8 bg-[#fff] max-xl:w-[95%]">
+        <div className="text-black max-w-[1295px] m-auto mt-16 bg-[#fff] max-xl:w-[95%]">
             <div className="relative">
                 <img src="/contact-img.svg" alt="services" />
                 <h2 className="text-[#1745E8] absolute right-[5%] top-[40%] text-4xl font-semibold leading-normal max-md:top-[20%] max-md:text-2xl">Contáctanos</h2>
