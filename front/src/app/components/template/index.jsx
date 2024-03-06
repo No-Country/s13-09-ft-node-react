@@ -5,7 +5,7 @@ import { Inter } from "next/font/google";
 const inter = Inter({subsets: ['latin'], weight: '500'});
 
 export function TemplateCartDashBoard({ imgSvg, title, onClick }) {
-  return  onClick ? <button onClick={handleClick} href={"/createTurn"} className="text-black flex items-center justify-between p-4 border-[1px] border-[#ddd] rounded-lg w-[400px] h-[112px] max-md:w-[350px] max-md:h-[90px] shadow-[0_0_5px_1px_#ddd] hover:scale-105">
+  return  onClick ? <button onClick={handleClick} href={"/createTurn"} className="text-black flex items-center justify-between p-4 border-[1px] border-[#ddd] rounded-lg w-[400px] h-[112px] max-md:w-full max-md:h-[90px] shadow-[0_0_5px_1px_#ddd] hover:scale-105">
   <div className="flex gap-4 items-center">
       <img src={imgSvg} alt={title} />
       <h2 className="text-xl text-[#111928]">{title}</h2>
@@ -13,7 +13,7 @@ export function TemplateCartDashBoard({ imgSvg, title, onClick }) {
   <div>
       <img src="/arrow-right.svg" alt="arrowRight" />
   </div>
-</button> : <Link href={"/createTurn"} className="text-black flex items-center justify-between p-4 border-[1px] border-[#ddd] rounded-lg w-[400px] h-[112px] max-md:w-[350px] max-md:h-[90px] shadow-[0_0_5px_1px_#ddd] hover:scale-105">
+</button> : <Link href={"/createTurn"} className="text-black flex items-center justify-between p-4 border-[1px] border-[#ddd] rounded-lg w-[400px] h-[112px] max-md:w-full max-md:h-[90px] shadow-[0_0_5px_1px_#ddd] hover:scale-105">
       <div className="flex gap-4 items-center">
           <img src={imgSvg} alt={title} />
           <h2 className="text-xl text-[#111928]">{title}</h2>
@@ -26,7 +26,7 @@ export function TemplateCartDashBoard({ imgSvg, title, onClick }) {
 }
 
 export function TemplateCartService({imgSvg, title,description}) {
-    return <div href={"/"} className="text-center text-black flex flex-col gap-4  items-center justify-between p-4 border-[1px] border-[#ddd] rounded-lg w-[301px] h-[185px] shadow-[0_0_5px_1px_#ddd] ">
+    return <div href={"/"} className="text-center text-black flex flex-col gap-4  items-center justify-between p-4 border-[1px] border-[#ddd] rounded-lg w-[301px] max-sm:w-full h-[185px] shadow-[0_0_5px_1px_#ddd] ">
         <div className="flex gap-4 items-center justify-center  w-[76px] h-[76px] bg-[#01519026] rounded-full ">
             <img src={imgSvg} alt={title} />
         </div>
@@ -44,7 +44,6 @@ export function TemplateCreateTurn({ title, id, dataDefault, position }) {
         <p  id={id} className={`${inter.className}  ${dataDefault ?" text-[#015190]" :" text-[#9E9E9E]"}  text-[#015190]`}>{ title}</p>
     </div>)
 }
-
 export function TemplateInputCreateTurn({ type ,dataArray,modData,dataDefault}) {
     const [selectedEspecialidad, setSelectedEspecialidad] = useState(dataDefault);
     useEffect(() => {

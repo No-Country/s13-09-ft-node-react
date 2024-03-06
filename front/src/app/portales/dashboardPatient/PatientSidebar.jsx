@@ -32,13 +32,13 @@ export const PatientSidebar = ({ paciente }) => {
                         <Image
                             width={80}
                             height={80}
-                            src="/assets/perfil.jpg"
+                            src="/user.svg"
                             alt="Foto del paciente"
                             className="h-16 w-16 rounded-full"
                         />
                     </div>
                     <div className="ml-2">
-                        <p className="font-semibold text-gray-900">Tomas Juarez</p>
+                        <p className="font-semibold text-gray-900">{ paciente}</p>
                     </div>
                 </div>
 
@@ -67,7 +67,7 @@ export const PatientSidebar = ({ paciente }) => {
                             alt="icon logout"
                         />
                     </div>
-                    <Link href="/logout" className="text-gray-900">Cerrar sesión</Link>
+                    <Link href="/register" className="text-gray-900">Cerrar sesión</Link>
                 </div>
             </div>
         </div>

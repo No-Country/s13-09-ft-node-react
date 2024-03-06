@@ -1,4 +1,4 @@
-
+"use client"
 import React from "react";
 import Image from "next/image";
 import {PatientSidebar} from "./PatientSidebar";
@@ -9,14 +9,30 @@ import {Exclamacion} from "../../ui/svg/Exclamacion";
 import {Cruz} from "../../ui/svg/Cruz";
 import {Check} from "../../ui/svg/Check";
 import { Footer } from "../../components/footer";
-
+import { userData } from "../../utils/store"
+import { useEffect } from "react";
+import axios from 'axios';
+import baseURL from '../../utils/baseUrl';
 const PatientPage = () => {
+    const { data,set } = userData()
+    
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            if (localStorage.getItem("id")) {
+                (async () => {
+                    const response = await axios.get(`${baseURL}/patients/` + localStorage.getItem("id"));
+                    set(() => ({ data: response.data  }))
+                })()
+            }
+        }
+    }, [])
+
     return (
         <div className="flex h-screen flex-col">
             {/* Contenido principal */}
             <div className="flex flex-1">
                 {/* Sidebar del paciente */}
-                <PatientSidebar />
+                <PatientSidebar paciente={data?.patient?.name +" " + data?.patient?.surname}/>
 
                 {/* Contenido del Dashboard */}
                 <div className="flex-1 p-4">
@@ -33,12 +49,12 @@ const PatientPage = () => {
                             <Image
                                 width={60}
                                 height={60}
-                                src="/assets/perfil.jpg"
+                                src="/user.svg"
                                 alt="patient img"
                                 className="mr-4 h-8 w-8 rounded-full"
                             />
                             <span className="text-lg font-semibold text-gray-900">
-                                Tomas Juarez
+                               {data?.patient?.name +" " + data?.patient?.surname  || "Tomas Juarez"}
                             </span>
                         </div>
                     </div>
@@ -53,7 +69,7 @@ const PatientPage = () => {
                             {/* Datos del paciente */}
                             <p className="mb-2 text-gray-900">
                                 <span>Email: </span>{" "}
-                                <span className="font-semibold">tomas.juarez@email.com</span>
+                                <span className="font-semibold">{ data?.patient?.email || "tomas.juarez@email.com"}</span>
                             </p>
                             <p className="mb-2 text-gray-900">
                                 <span>Fecha de nacimiento: </span>{" "}
@@ -65,11 +81,11 @@ const PatientPage = () => {
                             </p>
                             <p className="mb-2 text-gray-900">
                                 <span>ID del paciente: </span>{" "}
-                                <span className="font-semibold">TJ2024001</span>
+                                <span className="font-semibold">{data?.patient?.id || "TJ2024001"}</span>
                             </p>
                             <p className="mb-2 text-gray-900">
                                 <span>Teléfono: </span>{" "}
-                                <span className="font-semibold">+54 9 11 2345-6789</span>
+                                <span className="font-semibold">{data?.patient?.mobile ||"54 9 11 2345-6789"}</span>
                             </p>
                             <p className="mb-2 text-gray-900">
                                 <span>Legajo número: </span>{" "}

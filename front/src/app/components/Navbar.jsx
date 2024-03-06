@@ -1,10 +1,27 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
+import axios from 'axios';
+import baseURL from '../utils/baseUrl';
+import { userData } from "../utils/store"
+import {Perfil} from "../ui/perfil"
 const Navbar = () => {
     const [isClick, setIsClick] = useState(false);
+    const { data, set } = userData()
+    
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            if (localStorage.getItem("id")) {
+                (async () => {
+                    const response = await axios.get(`${baseURL}/patients/` + localStorage.getItem("id"));
+                    set(() => ({ data: response.data  }))
+                })()
+            }
+        }
+    }, [])
+
 
     const toggleNavbar = () => {
         setIsClick(!isClick);
@@ -13,7 +30,7 @@ const Navbar = () => {
     const closeNavbar = () => {
         setIsClick(false);
     };
-
+    
     return (
         <nav className="bg-white fixed right-0 left-0 top-0 border-b-[1px] border-b-[#ddd] z-10">
             <div className="max-w-7xl mx-auto  px-4 sm:px-6 lg:px-8 max-lg:ml-0 pl-0">
@@ -55,7 +72,8 @@ const Navbar = () => {
                                     Profesionales
                                 </div>
                             </Link>
-                            <Link href="/login" onClick={closeNavbar}>
+                            {
+                                data?.patient ? <Perfil data={data}/> : <> <Link href="/login" onClick={closeNavbar}>
                                 <div className="text-slate-600 hover:text-slate-50 px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-600">
                                     Ingresar
                                 </div>
@@ -64,7 +82,8 @@ const Navbar = () => {
                                 <div className="text-slate-600 hover:text-slate-50 px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-600">
                                     Registrarse
                                 </div>
-                            </Link>
+                            </Link></>
+                           }
                         </div>
                     </div>
 
@@ -100,7 +119,9 @@ const Navbar = () => {
                         Profesionales
                         </div>
                     </Link>
-                    <Link href="/login" onClick={closeNavbar}>
+                    {
+                        data?.patient ? <Perfil data={data}/> : <>
+                         <Link href="/login" onClick={closeNavbar}>
                         <div className="text-slate-600 hover:text-slate-50 block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700">
                             Ingresar
                         </div>
@@ -109,7 +130,7 @@ const Navbar = () => {
                         <div className="text-slate-600 hover:text-slate-50 block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700">
                             Registrarse
                         </div>
-                    </Link>
+                    </Link></>}
                 </div>
             </div>
         </nav>

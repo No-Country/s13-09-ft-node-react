@@ -17,7 +17,7 @@ export default function  Doctors(){
             <h2 className="text-[#1745E8] absolute left-[5%] top-[40%] text-4xl font-semibold leading-normal max-md:top-[20%] max-md:text-2xl">Conoce nuestros <br className="mt-4"/> Doctores</h2>
         </div>
         <div className="mt-8 mb-8 flex flex-col gap-8">
-            <h3 className="text-[#1745E8] border-b-[1px] border-[#1745E8] w-max	">Especialidades de nuestros profesionales</h3>
+            <h3 className="text-[#1745E8] border-b-[1px] border-[#1745E8] w-fit	">Especialidades de nuestros profesionales</h3>
             <div className="flex flex-wrap justify-center gap-4">
                 {listDocts.map((item, position) => <div key={position} className="flex flex-col items-center gap-2  shadow-[0px_12px_48px_0px_#0134821A]  rounded-lg">
                     <div className=" flex justify-center items-center bg-[#BDE3FF]"><img src={ item.img} alt={item.name} height={"40px"}/></div>

@@ -9,3 +9,8 @@ export const useTurnStore = create((set) => ({
         isSelectHorario: "10:20 hs"}],
     set
 }))
+
+export const userData = create((set) => ({
+    data: {},
+    set
+}))

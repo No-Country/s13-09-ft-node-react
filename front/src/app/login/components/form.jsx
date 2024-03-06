@@ -4,8 +4,10 @@ import axios from 'axios';
 import { ToastContainer } from 'react-toastify';
 import { displaySuccessMessage, displayFailedMessage } from '../../components/Toastify/Toastify';
 import baseURL from '../../utils/baseUrl';
+import { useRouter } from 'next/navigation';
 
 export function FormLogin() {
+  const {push} = useRouter()
   const [isOpenPassword, setIsOpenPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,9 +22,11 @@ export function FormLogin() {
       });
       console.log('Login success:', response.data);
       displaySuccessMessage("Sesión Iniciada 👌")
-      setTimeout(() => {
-        window.location.href = '/dashboard';
-      }, 3000);
+      localStorage.setItem("id",response.data.id)
+      push("/dashboard")
+      // setTimeout(() => {
+      //   window.location.href = '/dashboard';
+      // }, 3000);
     } catch (error) {
       console.error('Login error:', error);
       displayFailedMessage("Hubo un problema para iniciar sesión 😕")
